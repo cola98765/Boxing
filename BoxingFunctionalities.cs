@@ -72,7 +72,11 @@ namespace Boxing
                         if (can == null) break;
                         hp[i] = can.m_CurrentHP;
                         totalhp += can.GetNormalizedCondition();
-                        if (can.m_StackableItem != null) can.m_StackableItem.m_Units--;
+                        if (can.m_StackableItem != null)
+                        {
+                            can.m_StackableItem.m_Units--;
+                            if (can.m_StackableItem.m_Units == 0) GameManager.GetInventoryComponent().RemoveGear(can.gameObject);
+                        }
                         else GameManager.GetInventoryComponent().RemoveGear(can.gameObject);
 
                     }
@@ -114,7 +118,11 @@ namespace Boxing
                     GearItem can = GameManager.GetInventoryComponent().GetHighestConditionGearThatMatchesName(BoxingUtils.unpilable[j]);
                     if (can == null) break;
                     totalhp = can.m_CurrentHP;
-                    if (can.m_StackableItem != null) can.m_StackableItem.m_Units--;
+                    if (can.m_StackableItem != null)
+                    {
+                        can.m_StackableItem.m_Units--;
+                        if (can.m_StackableItem.m_Units == 0) GameManager.GetInventoryComponent().RemoveGear(can.gameObject);
+                    }
                     else GameManager.GetInventoryComponent().RemoveGear(can.gameObject);
 
                     pileindex = j;
