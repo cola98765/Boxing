@@ -24,7 +24,7 @@ namespace Boxing
         }
         public static bool LoadItems()
         {
-            if (File.Exists("Mods\\BoxingList.txt"))
+            if (File.Exists("Mods\\BoxingList.txt") && pilable.Count == 0)
             {
                 using (StreamReader sr = File.OpenText("Mods\\BoxingList.txt"))
                 {
