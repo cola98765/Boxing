@@ -1,6 +1,10 @@
 ﻿using Il2Cpp;
+using Il2CppTLD.Cooking;
+using Il2CppTLD.Gear;
+using Il2CppTLD.IntBackedUnit;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Playables;
 
 namespace Boxing
 {
@@ -42,6 +46,30 @@ namespace Boxing
                         pilable.Add(packline[0]);
                         unpilable.Add(packline[1]);
                         pilesize.Add(Int32.Parse(packline[2]));
+                        if (Settings.instance.decay) //setting enabled decay copy
+                        {
+                            GearItem source = GearItem.LoadGearItemPrefab(packline[0]);
+                            GearItem target = GearItem.LoadGearItemPrefab(packline[1]);
+                            if (target.GearItemData.m_DailyHPDecay == 0)
+                            {
+                                if (source.GetComponent<FoodItem>() != null && target.GetComponent<FoodItem>() == null)
+                                {
+                                    float sourceInside = source.GetComponent<FoodItem>().m_DailyHPDecayInside;
+                                    float sourceOutside = source.GetComponent<FoodItem>().m_DailyHPDecayInside;
+                                    if (sourceInside != 0 || sourceOutside != 0)
+                                    {
+                                        if (sourceInside > sourceOutside) target.GearItemData.m_DailyHPDecay = sourceOutside * Settings.instance.decaybonus;
+                                        else target.GearItemData.m_DailyHPDecay = sourceInside * Settings.instance.decaybonus;
+                                        MelonLoader.MelonLogger.Msg("boxing decay added for: " + packline[1]);
+                                    }
+                                }
+                                else if (source.GearItemData.m_DailyHPDecay > 0)
+                                {
+                                    target.GearItemData.m_DailyHPDecay = source.GearItemData.m_DailyHPDecay; //does not get the bonus as it should not stack
+                                    MelonLoader.MelonLogger.Msg("boxing decay added for: " + packline[1]);
+                                }
+                            }
+                        }
                     }
                     sr.Close();
                 }
@@ -52,10 +80,6 @@ namespace Boxing
         }
         public static bool IsItemPileable(string gearItemName)
         {
-            if (pilable.Count == 0)
-            {
-                if (!LoadItems()) { return false; }
-            }
             for(int i = 0; i < pilable.Count; i++)
             {
                 if (pilable[i] == gearItemName) return true;
@@ -65,10 +89,6 @@ namespace Boxing
 
         public static bool IsItemUnPileable(string gearItemName)
         {
-            if (unpilable.Count == 0)
-            {
-                if (!LoadItems()) { return false; }
-            }
             for (int i = 0; i < unpilable.Count; i++)
             {
                 if (unpilable[i] == gearItemName) return true;

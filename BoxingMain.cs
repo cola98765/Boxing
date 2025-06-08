@@ -1,7 +1,6 @@
 ﻿using MelonLoader;
 
-
-namespace ModNamespace
+namespace Boxing
 {
     internal sealed class BoxingMain : MelonMod
     {
@@ -12,11 +11,17 @@ namespace ModNamespace
         public override void OnInitializeMelon()
         {
             MelonLoader.MelonLogger.Msg(System.ConsoleColor.Green, "boxing Loaded!");
-            //Settings.instance.AddToModSettings("Boxing");
+            Settings.instance.AddToModSettings("Boxing");
         }
         public override void OnSceneWasInitialized(int level, string name)
         {
+            if (BoxingUtils.IsScenePlayable(name))
+            {
+                isLoaded = true;
 
+                BoxingUtils.LoadItems();
+
+            }
         }
 
     }

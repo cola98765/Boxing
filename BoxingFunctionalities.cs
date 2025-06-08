@@ -102,7 +102,7 @@ namespace Boxing
         }
         private static void OnPileFinished(bool success, bool playerCancel, float progress)
         {
-            GearItem toadd = Addressables.LoadAssetAsync<GameObject>(BoxingUtils.unpilable[pileindex]).WaitForCompletion().GetComponent<GearItem>();
+            GearItem toadd = GearItem.LoadGearItemPrefab(BoxingUtils.unpilable[pileindex]);
             GameManager.GetPlayerManagerComponent().InstantiateItemInPlayerInventory(toadd, 1, totalhp);
         }
 
@@ -135,7 +135,7 @@ namespace Boxing
         }
         private static void OnUnPileFinished(bool success, bool playerCancel, float progress)
         {
-            GearItem toadd = Addressables.LoadAssetAsync<GameObject>(BoxingUtils.pilable[pileindex]).WaitForCompletion().GetComponent<GearItem>();
+            GearItem toadd = GearItem.LoadGearItemPrefab(BoxingUtils.pilable[pileindex]);
             for (int i = 0; i < BoxingUtils.pilesize[pileindex]; i++)
             {
                 GameManager.GetPlayerManagerComponent().InstantiateItemInPlayerInventory(toadd, 1, totalhp);
