@@ -36,6 +36,8 @@ namespace Boxing
                             sr.Close();
                             return false;
                         }
+                        if (temp[0] == '#') continue;
+
                         MelonLoader.MelonLogger.Msg("boxing blueprint: " + temp);
                         string[] packline = temp.Split(';');
                         if (packline == null)
