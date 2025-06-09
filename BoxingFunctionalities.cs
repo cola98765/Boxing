@@ -138,7 +138,7 @@ namespace Boxing
                         HUDMessage.AddMessage("The powder bag is not full, unable to unpile");
                         break;
                     }
-                    totalhp = thisGearItem.m_CurrentHP;
+                    totalhp = thisGearItem.GetNormalizedCondition();
                     if (thisGearItem.m_StackableItem != null)
                     {
                         thisGearItem.m_StackableItem.m_Units--;
