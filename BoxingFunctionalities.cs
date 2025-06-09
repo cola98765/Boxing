@@ -69,7 +69,21 @@ namespace Boxing
                     for (i = 0; i < BoxingUtils.pilesize[j]; i++)
                     {
                         GearItem can = GameManager.GetInventoryComponent().GetHighestConditionGearThatMatchesName(BoxingUtils.pilable[j]);
-                        if (can == null) break;
+                        if (can == null)
+                        {
+                            HUDMessage.AddMessage("Not enought to pile, you need " + BoxingUtils.pilesize[j]);
+                            break;
+                        }
+                        if (can.m_FoodItem != null && can.m_FoodItem.m_CaloriesRemaining != can.m_FoodItem.m_CaloriesTotal)
+                        {
+                            HUDMessage.AddMessage("Not all cans are full, you need " + BoxingUtils.pilesize[j] + " full items");
+                            break;
+                        }
+                        if (can.m_PowderItem != null && can.m_PowderItem.m_Weight != can.m_PowderItem.m_WeightLimit)
+                        {
+                            HUDMessage.AddMessage("Not all powder sources are full, you need " + BoxingUtils.pilesize[j] + " full items");
+                            break;
+                        }
                         hp[i] = can.m_CurrentHP;
                         totalhp += can.GetNormalizedCondition();
                         if (can.m_StackableItem != null)
@@ -89,7 +103,6 @@ namespace Boxing
                     }
                     else
                     {
-                        HUDMessage.AddMessage("Not enought to pile, you need " + BoxingUtils.pilesize[j]);
                         i--;
                         for (; i >= 0; i--)
                         {
@@ -115,15 +128,23 @@ namespace Boxing
             {
                 if (BoxingUtils.unpilable[j] == thisGearItem.name)
                 {
-                    GearItem can = GameManager.GetInventoryComponent().GetHighestConditionGearThatMatchesName(BoxingUtils.unpilable[j]);
-                    if (can == null) break;
-                    totalhp = can.m_CurrentHP;
-                    if (can.m_StackableItem != null)
+                    if (thisGearItem.m_FoodItem != null && thisGearItem.m_FoodItem.m_CaloriesRemaining != thisGearItem.m_FoodItem.m_CaloriesTotal)
                     {
-                        can.m_StackableItem.m_Units--;
-                        if (can.m_StackableItem.m_Units == 0) GameManager.GetInventoryComponent().RemoveGear(can.gameObject);
+                        HUDMessage.AddMessage("The food item is not full, unable to unpile");
+                        break;
                     }
-                    else GameManager.GetInventoryComponent().RemoveGear(can.gameObject);
+                    if (thisGearItem.m_PowderItem != null && thisGearItem.m_PowderItem.m_Weight != thisGearItem.m_PowderItem.m_WeightLimit)
+                    {
+                        HUDMessage.AddMessage("The powder bag is not full, unable to unpile");
+                        break;
+                    }
+                    totalhp = thisGearItem.m_CurrentHP;
+                    if (thisGearItem.m_StackableItem != null)
+                    {
+                        thisGearItem.m_StackableItem.m_Units--;
+                        if (thisGearItem.m_StackableItem.m_Units == 0) GameManager.GetInventoryComponent().RemoveGear(thisGearItem.gameObject);
+                    }
+                    else GameManager.GetInventoryComponent().RemoveGear(thisGearItem.gameObject);
 
                     pileindex = j;
                     InterfaceManager.GetPanel<Panel_GenericProgressBar>().Launch("Unpiling...", 1f, 0f, 0f,

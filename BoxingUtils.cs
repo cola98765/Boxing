@@ -69,8 +69,9 @@ namespace Boxing
                                     MelonLoader.MelonLogger.Msg("boxing decay added for: " + packline[1]);
                                 }
                             }
-                            if (source.GearItemData.m_DailyHPDecay == 0 && target.GearItemData.m_DailyHPDecay > 0) //rare case where stacked item has decay and source does not
+                            else if (source.GearItemData.m_DailyHPDecay == 0 && source.GetComponent<FoodItem>() == null) 
                             {
+                                //rare case where stacked item has decay and source does not like TKG flour
                                 target.GearItemData.m_DailyHPDecay = source.GearItemData.m_DailyHPDecay; //does not get the bonus as it should not stack
                                 MelonLoader.MelonLogger.Msg("boxing decay added for: " + packline[0]);
                             }
