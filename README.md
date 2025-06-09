@@ -16,19 +16,19 @@ Base config file has [ItemPiles](https://github.com/Thekillergreece/FoodPackByTK
 
 ## Changelog
 
-**V1.1.1:**
+**V1.1.2:**
+* added per item decay time multiplier in config file as workaround to me being unable to figure out why not only simply copying values can give different results, with recorded values bieng 1, 2, or 4,
 
+**V1.1.1:**
 * fix condition actually applying when unpacking
 * added path for pile to define decay on unpiled item (eg TKG flour ingeriting decay from vanilla)
 * added checks for not full food, powder, or liquid items
 * added ability to comment in config file
 
 **V1.1:**
-
 * Packaged items decay
 
 **V1.0:**
-
 * initial release
 
 ## Credits

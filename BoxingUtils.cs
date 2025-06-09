@@ -50,6 +50,8 @@ namespace Boxing
                         pilesize.Add(Int32.Parse(packline[2]));
                         if (Settings.instance.decay)
                         {
+                            int decayfix = 1;
+                            if (packline.Length > 3) decayfix = Int32.Parse(packline[3]);
                             GearItem source = GearItem.LoadGearItemPrefab(packline[0]);
                             GearItem target = GearItem.LoadGearItemPrefab(packline[1]);
                             if (target.GearItemData.m_DailyHPDecay == 0)
@@ -60,21 +62,24 @@ namespace Boxing
                                     float sourceOutside = source.GetComponent<FoodItem>().m_DailyHPDecayInside;
                                     if (sourceInside != 0 || sourceOutside != 0)
                                     {
+                                        target.GearItemData.m_ConditionType = source.GearItemData.m_ConditionType;
                                         if (sourceInside > sourceOutside) target.GearItemData.m_DailyHPDecay = sourceOutside * Settings.instance.decaybonus;
-                                        else target.GearItemData.m_DailyHPDecay = sourceInside * Settings.instance.decaybonus;
+                                        else target.GearItemData.m_DailyHPDecay = sourceInside * Settings.instance.decaybonus / decayfix;
                                         MelonLoader.MelonLogger.Msg("boxing decay added for: " + packline[1]);
                                     }
                                 }
                                 else if (source.GearItemData.m_DailyHPDecay > 0)
                                 {
-                                    target.GearItemData.m_DailyHPDecay = source.GearItemData.m_DailyHPDecay; //does not get the bonus as it should not stack
+                                    target.GearItemData.m_ConditionType = source.GearItemData.m_ConditionType;
+                                    target.GearItemData.m_DailyHPDecay = source.GearItemData.m_DailyHPDecay / decayfix; //does not get the bonus as it should not stack
                                     MelonLoader.MelonLogger.Msg("boxing decay added for: " + packline[1]);
                                 }
                             }
                             else if (source.GearItemData.m_DailyHPDecay == 0 && source.GetComponent<FoodItem>() == null) 
                             {
                                 //rare case where stacked item has decay and source does not like TKG flour
-                                source.GearItemData.m_DailyHPDecay = target.GearItemData.m_DailyHPDecay; //does not get the bonus as it should not stack
+                                source.GearItemData.m_ConditionType = target.GearItemData.m_ConditionType;
+                                source.GearItemData.m_DailyHPDecay = target.GearItemData.m_DailyHPDecay / decayfix; //does not get the bonus as it should not stack
                                 MelonLoader.MelonLogger.Msg("boxing decay added for: " + packline[0]);
                             }
                         }
