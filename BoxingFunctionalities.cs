@@ -81,7 +81,12 @@ namespace Boxing
                         }
                         if (can.m_PowderItem != null && can.m_PowderItem.m_Weight != can.m_PowderItem.m_WeightLimit)
                         {
-                            HUDMessage.AddMessage("Not all powder sources are full, you need " + BoxingUtils.pilesize[j] + " full items");
+                            HUDMessage.AddMessage("Not all powder sources are full, you need " + BoxingUtils.pilesize[j] + " full bags");
+                            break;
+                        }
+                        if (thisGearItem.m_LiquidItem != null && can.m_LiquidItem.m_Liquid != can.m_LiquidItem.m_LiquidCapacity)
+                        {
+                            HUDMessage.AddMessage("Not all fluid bottles are full, you need " + BoxingUtils.pilesize[j] + " full bottles");
                             break;
                         }
                         hp[i] = can.m_CurrentHP;
@@ -136,6 +141,11 @@ namespace Boxing
                     if (thisGearItem.m_PowderItem != null && thisGearItem.m_PowderItem.m_Weight != thisGearItem.m_PowderItem.m_WeightLimit)
                     {
                         HUDMessage.AddMessage("The powder bag is not full, unable to unpile");
+                        break;
+                    }
+                    if (thisGearItem.m_LiquidItem != null && thisGearItem.m_LiquidItem.m_Liquid != thisGearItem.m_LiquidItem.m_LiquidCapacity)
+                    {
+                        HUDMessage.AddMessage("The fluid bottle is not full, unable to unpile");
                         break;
                     }
                     totalhp = thisGearItem.GetNormalizedCondition();

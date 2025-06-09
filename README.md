@@ -16,6 +16,12 @@ Base config file has [ItemPiles](https://github.com/Thekillergreece/FoodPackByTK
 
 ## Changelog
 
+**V1.1.1:**
+
+* fix condition actually applying when unpacking
+* added path for pile to define decay on unpiled item (eg TKG flour ingeriting decay from vanilla)
+* added checks for not full food, powder, or liquid items
+
 **V1.1:**
 
 * Packaged items decay
