@@ -46,7 +46,7 @@ namespace Boxing
                         pilable.Add(packline[0]);
                         unpilable.Add(packline[1]);
                         pilesize.Add(Int32.Parse(packline[2]));
-                        if (Settings.instance.decay) //setting enabled decay copy
+                        if (Settings.instance.decay)
                         {
                             GearItem source = GearItem.LoadGearItemPrefab(packline[0]);
                             GearItem target = GearItem.LoadGearItemPrefab(packline[1]);
@@ -68,6 +68,11 @@ namespace Boxing
                                     target.GearItemData.m_DailyHPDecay = source.GearItemData.m_DailyHPDecay; //does not get the bonus as it should not stack
                                     MelonLoader.MelonLogger.Msg("boxing decay added for: " + packline[1]);
                                 }
+                            }
+                            if (source.GearItemData.m_DailyHPDecay == 0 && target.GearItemData.m_DailyHPDecay > 0) //rare case where stacked item has decay and source does not
+                            {
+                                target.GearItemData.m_DailyHPDecay = source.GearItemData.m_DailyHPDecay; //does not get the bonus as it should not stack
+                                MelonLoader.MelonLogger.Msg("boxing decay added for: " + packline[0]);
                             }
                         }
                     }
