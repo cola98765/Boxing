@@ -8,8 +8,7 @@ And Unlike blueprints condition is preserved, meaning food will not magically ga
 ## Packages will decay
 Even if original author did not define decay rate for the package, if the base item had decay rate it will be applied to package too. (configurable)
 
-## However, this mod does not add any piled items on it's own,
-Base config file has [ItemPiles](https://github.com/Thekillergreece/FoodPackByTKG) and [FoodPackByTKG](https://github.com/Atlas-Lumi/ItemPiles) as examples
+in addition to couple boxed items in this modcomponent package, base config file has [ItemPiles](https://github.com/Thekillergreece/FoodPackByTKG) and [FoodPackByTKG](https://github.com/Atlas-Lumi/ItemPiles) as examples
 
 ## Installation
 
