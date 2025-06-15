@@ -3,6 +3,8 @@ Boxing is a mod that expands on the piling formula some other mods use.
 Instead of using blueprints it uses custom interaction in inspect menu.
 And Unlike blueprints condition is preserved, meaning food will not magically gain contition.
 
+![Assets/20250615215430_1.jpg](https://raw.githubusercontent.com/cola98765/Boxing/refs/heads/master/Assets/20250615215430_1.jpg)
+
 ## Packages will decay
 Even if original author did not define decay rate for the package, if the base item had decay rate it will be applied to package too. (configurable)
 
