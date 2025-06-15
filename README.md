@@ -16,6 +16,10 @@ Base config file has [ItemPiles](https://github.com/Thekillergreece/FoodPackByTK
 
 ## Changelog
 
+**V1.2.0**
+* created couple sample boxed vanilla items (no localisation nor inventory icons)
+* adeed null check if gear is not valid
+
 **V1.1.2:**
 * fix decay rates being calculated incorrectly ignoring max HP other than 100 and taking inside decay as outside too
 

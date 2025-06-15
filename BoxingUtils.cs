@@ -38,20 +38,25 @@ namespace Boxing
                         }
                         if (temp[0] == '#') continue;
 
-                        MelonLoader.MelonLogger.Msg("boxing blueprint: " + temp);
+                        MelonLoader.MelonLogger.Msg("blueprint: " + temp);
                         string[] packline = temp.Split(';');
                         if (packline == null)
                         {
                             sr.Close();
                             return false;
                         }
+                        GearItem source = GearItem.LoadGearItemPrefab(packline[0]);
+                        GearItem target = GearItem.LoadGearItemPrefab(packline[1]);
+                        if (source == null || target == null)
+                        {
+                            MelonLoader.MelonLogger.Msg("one of items is null, skipping");
+                            continue;
+                        }
                         pilable.Add(packline[0]);
                         unpilable.Add(packline[1]);
                         pilesize.Add(Int32.Parse(packline[2]));
                         if (Settings.instance.decay)
                         {
-                            GearItem source = GearItem.LoadGearItemPrefab(packline[0]);
-                            GearItem target = GearItem.LoadGearItemPrefab(packline[1]);
                             if (target.GearItemData.m_DailyHPDecay == 0)
                             {
                                 if (source.m_FoodItem != null && target.m_FoodItem == null)
@@ -63,14 +68,14 @@ namespace Boxing
                                         target.GearItemData.m_ConditionType = source.GearItemData.m_ConditionType;
                                         if (sourceInside > sourceOutside) target.GearItemData.m_DailyHPDecay = sourceOutside * Settings.instance.decaybonus / source.GearItemData.MaxHP * 100f;
                                         else target.GearItemData.m_DailyHPDecay = sourceInside * Settings.instance.decaybonus / source.GearItemData.MaxHP * 100f;
-                                        MelonLoader.MelonLogger.Msg("boxing decay added for: " + packline[1]);
+                                        MelonLoader.MelonLogger.Msg("decay added for: " + packline[1]);
                                     }
                                 }
                                 else if (source.GearItemData.m_DailyHPDecay > 0)
                                 {
                                     target.GearItemData.m_ConditionType = source.GearItemData.m_ConditionType;
                                     target.GearItemData.m_DailyHPDecay = source.GearItemData.m_DailyHPDecay / source.GearItemData.MaxHP * 100f; //does not get the bonus as it should not stack
-                                    MelonLoader.MelonLogger.Msg("boxing decay added for: " + packline[1]);
+                                    MelonLoader.MelonLogger.Msg("decay added for: " + packline[1]);
                                 }
                             }
                             else if (source.GearItemData.m_DailyHPDecay == 0 && source.m_FoodItem == null) 
@@ -78,7 +83,7 @@ namespace Boxing
                                 //rare case where stacked item has decay and source does not like TKG flour
                                 source.GearItemData.m_ConditionType = target.GearItemData.m_ConditionType;
                                 source.GearItemData.m_DailyHPDecay = target.GearItemData.m_DailyHPDecay / target.GearItemData.MaxHP * 100f ; //does not get the bonus as it should not stack
-                                MelonLoader.MelonLogger.Msg("boxing decay added for: " + packline[0]);
+                                MelonLoader.MelonLogger.Msg("decay added for: " + packline[0]);
                             }
                         }
                     }

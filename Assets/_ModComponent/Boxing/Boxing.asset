@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 979bcfae80cf69f44b869e9c8c3392e5, type: 3}
+  m_Name: Boxing
+  m_EditorClassIdentifier: 
+  Name: Boxing
+  Author: cola98765
+  Version: 
+  RequiredMods: []
+  RequiresDLC: 0
+  modLocalization: {fileID: 0}
+  modGearSpawns: {fileID: 0}
+  modItemRarities: {fileID: 0}
+  Items:
+  - {fileID: 8439362343685313951, guid: 06db7defc1a9b424ca5a44890a04298c, type: 3}
+  - {fileID: 8439362343685313951, guid: 28487a860c6fba546a2fef748a8e2e9c, type: 3}
+  - {fileID: 8439362343685313951, guid: 460d8d039af15834ba11d0b64fc14576, type: 3}
+  - {fileID: 5028703667691849443, guid: 42e4aa713b2b33e46aa78711c665cf76, type: 3}
+  - {fileID: 5028703667691849443, guid: eda19ba884b8e5d4085939278d4d1a34, type: 3}
+  - {fileID: 5028703667691849443, guid: 95ec0250bbf31a5468f703c10c5fd6bd, type: 3}
+  - {fileID: 5028703667691849443, guid: 8c1dea203a2c286478ef733a33794700, type: 3}
+  - {fileID: 5028703667691849443, guid: 55d3c3bf3b6f82148b174f68e4fda009, type: 3}
+  - {fileID: 3213418757222480551, guid: acafc28ee9b93584288f4289cefa2df2, type: 3}
+  - {fileID: 695646609369777539, guid: 78f3913cbac3f754daef1cdd25aa61e7, type: 3}
+  Icons: []

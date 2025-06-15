@@ -1,0 +1,42 @@
+{
+  "ModBurnableBehaviour": {
+    "BurningMinutes": 180,
+    "BurningMinutesBeforeAllowedToAdd": 0.0,
+    "SuccessModifier": 35.0,
+    "TempIncrease": 20.0,
+    "DurationOffset": 0.0
+  },
+  "ModGenericComponent": {
+    "DisplayNameLocalizationId": "GAMEPLAY_BookABox",
+    "DescriptionLocalizatonId": "GAMEPLAY_BookABoxDescription",
+    "InventoryActionLocalizationId": "",
+    "WeightKG": 5.0,
+    "DaysToDecay": 0,
+    "MaxHP": 100.0,
+    "InitialCondition": "Perfect",
+    "InventoryCategory": "Firestarting",
+    "PickUpAudio": "Play_SndInvBookHardcover",
+    "PutBackAudio": "Play_SndInvBookHardcover",
+    "StowAudio": "Play_InventoryStow",
+    "WornOutAudio": "",
+    "InspectOnPickup": true,
+    "InspectDistance": 1.0,
+    "InspectAngles": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "InspectOffset": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "InspectScale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "NormalModel": "",
+    "InspectModel": ""
+  }
+}
