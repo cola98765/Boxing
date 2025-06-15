@@ -361,3 +361,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Assets/AddressableAssetsData/AssetGroups
+/Assets/AddressableAssetsData/DataBuilders
+/Assets/AddressableAssetsData
+/Assets/Scenes
+/Assets/_ModComponent/DataAssets/Hinterland
+/Assets/_ModComponent/DataAssets/Modded/ModdersToolbox
