@@ -1,15 +1,15 @@
 {
-  "ModLiquidComponent": {
+  "ModGenericComponent": {
     "DisplayNameLocalizationId": "GAMEPLAY_WaterBarrel",
     "DescriptionLocalizatonId": "GAMEPLAY_WaterBarrelDescription",
     "InventoryActionLocalizationId": "",
-    "WeightKG": 1.0,
+    "WeightKG": 120.0,
     "DaysToDecay": 0,
     "MaxHP": 100.0,
     "InitialCondition": "Perfect",
-    "InventoryCategory": "Food",
-    "PickUpAudio": "Play_InspectFuel",
-    "PutBackAudio": "Play_InspectFuel",
+    "InventoryCategory": "Material",
+    "PickUpAudio": "Play_SndInvWaterBottle",
+    "PutBackAudio": "Play_SndInvWaterBottlePutBack",
     "StowAudio": "Play_InventoryStow",
     "WornOutAudio": "",
     "InspectOnPickup": true,
@@ -30,10 +30,27 @@
       1.0
     ],
     "NormalModel": "",
-    "InspectModel": "",
-    "LiquidType": "Kerosene",
-    "LiquidCapacityLiters": 120.0,
-    "RandomizedQuantity": false,
-    "LiquidLiters": 0.01
+    "InspectModel": ""
+  },
+  "ModHarvestableBehaviour": {
+    "Audio": "",
+    "Minutes": 5,
+    "YieldCounts": [
+      120
+    ],
+    "YieldNames": [
+      "GEAR_Water1000ml"
+    ],
+    "RequiredToolNames": []
+  },
+  "ModStackableBehaviour": {
+    "SingleUnitTextId": "GAMEPLAY_WaterBarrel",
+    "MultipleUnitTextId": "GAMEPLAY_WaterBarrel",
+    "StackSprite": "",
+    "UnitsPerItem": 1,
+    "ChanceFull": 100.0,
+    "ShareStackWithGear": [],
+    "InstantiateStackItem": "",
+    "StackConditionDifferenceConstraint": 0.0
   }
 }

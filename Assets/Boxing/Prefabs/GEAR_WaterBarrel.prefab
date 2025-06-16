@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3533059918142046531}
   - component: {fileID: 1988424682765466302}
-  - component: {fileID: 136248194760724648}
   m_Layer: 0
   m_Name: GEAR_WaterBarrel
   m_TagString: Untagged
@@ -47,41 +46,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 1.33, z: 0.8}
   m_Center: {x: 0, y: 0.66, z: 0}
---- !u!114 &136248194760724648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3213418757222480551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e4ea963e1235544ab4ffd1d2a43f8e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DisplayNameLocalizationId: GAMEPLAY_WaterBarrel
-  DescriptionLocalizatonId: GAMEPLAY_WaterBarrelDescription
-  InventoryActionLocalizationId: 
-  WeightKG: 1
-  DaysToDecay: 0
-  MaxHP: 100
-  InitialCondition: 1
-  InventoryCategory: 4
-  PickUpAudio: {fileID: 11400000, guid: 63181925a7a03b2498fb502394df2d91, type: 2}
-  PutBackAudio: {fileID: 11400000, guid: 63181925a7a03b2498fb502394df2d91, type: 2}
-  StowAudio: {fileID: 11400000, guid: cc4b615df8d7fdf42a45d9192c317d75, type: 2}
-  WornOutAudio: {fileID: 0}
-  InspectOnPickup: 1
-  InspectDistance: 1
-  InspectAngles: {x: 0, y: 0, z: 0}
-  InspectOffset: {x: 0, y: 0, z: 0}
-  InspectScale: {x: 1, y: 1, z: 1}
-  NormalModel: {fileID: 0}
-  InspectModel: {fileID: 0}
-  LiquidType: 0
-  LiquidCapacityLiters: 120
-  RandomizedQuantity: 0
-  LiquidLiters: 0.01
 --- !u!1 &7709346623266851218
 GameObject:
   m_ObjectHideFlags: 0

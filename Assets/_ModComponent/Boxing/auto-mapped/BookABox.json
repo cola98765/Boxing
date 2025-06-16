@@ -38,5 +38,15 @@
     ],
     "NormalModel": "",
     "InspectModel": ""
+  },
+  "ModStackableBehaviour": {
+    "SingleUnitTextId": "GAMEPLAY_BookABox",
+    "MultipleUnitTextId": "GAMEPLAY_BookABox",
+    "StackSprite": "",
+    "UnitsPerItem": 1,
+    "ChanceFull": 100.0,
+    "ShareStackWithGear": [],
+    "InstantiateStackItem": "",
+    "StackConditionDifferenceConstraint": 0.0
   }
 }

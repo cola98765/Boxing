@@ -1,0 +1,22 @@
+{
+  "Name": "blueprint_WaterBarrel",
+  "RequiredGear": [],
+  "RequiredPowder": [],
+  "RequiredLiquid": [
+    {
+      "Liquid": "LIQUID_WaterPotable",
+      "VolumeInLitres": 120.0
+    }
+  ],
+  "RequiredTool": "",
+  "OptionalTools": [],
+  "RequiredCraftingLocation": "Anywhere",
+  "RequiresLitFire": false,
+  "RequiresLight": false,
+  "CraftedResult": "GEAR_WaterBarrel",
+  "CraftedResultCount": 1,
+  "DurationMinutes": 5,
+  "CraftingAudio": "",
+  "AppliedSkill": "None",
+  "ImprovedSkill": "None"
+}

@@ -1,0 +1,22 @@
+{
+  "Name": "WaterBox",
+  "RequiredGear": [],
+  "RequiredPowder": [],
+  "RequiredLiquid": [
+    {
+      "Liquid": "LIQUID_WaterPotable",
+      "VolumeInLitres": 20.0
+    }
+  ],
+  "RequiredTool": "",
+  "OptionalTools": [],
+  "RequiredCraftingLocation": "Anywhere",
+  "RequiresLitFire": false,
+  "RequiresLight": false,
+  "CraftedResult": "GEAR_WaterBox",
+  "CraftedResultCount": 1,
+  "DurationMinutes": 1,
+  "CraftingAudio": "",
+  "AppliedSkill": "None",
+  "ImprovedSkill": "None"
+}

@@ -9,8 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1182133467203325306}
-  - component: {fileID: -6242191743413121379}
-  - component: {fileID: -6077758422633678278}
   m_Layer: 0
   m_Name: GEAR_BookABox
   m_TagString: Untagged
@@ -43,54 +41,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-6242191743413121379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 695646609369777539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 083d6eb84684b5f4a81cbc026db4e0aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BurningMinutes: 180
-  BurningMinutesBeforeAllowedToAdd: 0
-  SuccessModifier: 35
-  TempIncrease: 20
-  DurationOffset: 0
---- !u!114 &-6077758422633678278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 695646609369777539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b791cf8328f045d45bf04b4f116cb5bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DisplayNameLocalizationId: GAMEPLAY_BookABox
-  DescriptionLocalizatonId: GAMEPLAY_BookABoxDescription
-  InventoryActionLocalizationId: 
-  WeightKG: 5
-  DaysToDecay: 0
-  MaxHP: 100
-  InitialCondition: 1
-  InventoryCategory: 3
-  PickUpAudio: {fileID: 11400000, guid: 584a0a8bbd2f19643babc20aeb1df644, type: 2}
-  PutBackAudio: {fileID: 11400000, guid: 584a0a8bbd2f19643babc20aeb1df644, type: 2}
-  StowAudio: {fileID: 11400000, guid: cc4b615df8d7fdf42a45d9192c317d75, type: 2}
-  WornOutAudio: {fileID: 0}
-  InspectOnPickup: 1
-  InspectDistance: 1
-  InspectAngles: {x: 0, y: 0, z: 0}
-  InspectOffset: {x: 0, y: 0, z: 0}
-  InspectScale: {x: 1, y: 1, z: 1}
-  NormalModel: {fileID: 0}
-  InspectModel: {fileID: 0}
 --- !u!1001 &272366744887489526
 PrefabInstance:
   m_ObjectHideFlags: 0
