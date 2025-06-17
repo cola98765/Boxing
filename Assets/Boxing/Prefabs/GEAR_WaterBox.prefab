@@ -850,6 +850,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7584609500371251644}
   - component: {fileID: 2404312374454753779}
+  - component: {fileID: 9157946312152470490}
+  - component: {fileID: -3972123037725554461}
+  - component: {fileID: -6403848332437827801}
+  - component: {fileID: -4338563297768803509}
   m_Layer: 0
   m_Name: GEAR_WaterBox
   m_TagString: Untagged
@@ -906,6 +910,104 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.55, y: 0.3, z: 0.45}
   m_Center: {x: 0, y: 0.15, z: 0}
+--- !u!114 &9157946312152470490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6451429924672066334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b791cf8328f045d45bf04b4f116cb5bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayNameLocalizationId: GAMEPLAY_WaterBox
+  DescriptionLocalizatonId: GAMEPLAY_WaterBoxDescription
+  InventoryActionLocalizationId: 
+  WeightKG: 20
+  DaysToDecay: 0
+  MaxHP: 100
+  InitialCondition: 1
+  InventoryCategory: 5
+  PickUpAudio: {fileID: 11400000, guid: 2472992a2ae1f714fb988c42e3c96749, type: 2}
+  PutBackAudio: {fileID: 11400000, guid: 0f678f050ad4a5b4cbd73b2b004b1978, type: 2}
+  StowAudio: {fileID: 11400000, guid: cc4b615df8d7fdf42a45d9192c317d75, type: 2}
+  WornOutAudio: {fileID: 0}
+  InspectOnPickup: 1
+  InspectDistance: 1
+  InspectAngles: {x: 0, y: 0, z: 0}
+  InspectOffset: {x: 0, y: 0, z: 0}
+  InspectScale: {x: 1, y: 1, z: 1}
+  NormalModel: {fileID: 0}
+  InspectModel: {fileID: 0}
+--- !u!114 &-3972123037725554461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6451429924672066334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b360e647930687e44be00c8e1cbabafd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: WaterBox
+  RequiredGear: []
+  RequiredPowder: []
+  RequiredLiquid:
+  - LiquidItem: {fileID: 11400000, guid: 39e73e9b1ca7d824c9aac431a9967c04, type: 2}
+    VolumeInLitres: 20
+  RequiredTool: {fileID: 0}
+  OptionalTools: []
+  RequiredCraftingLocation: 0
+  RequiresLitFire: 0
+  RequiresLight: 0
+  CraftedResult: {fileID: 11400000, guid: 88422b4dd8888a34a8849a81fbf50428, type: 2}
+  CraftedResultCount: 1
+  DurationMinutes: 1
+  CraftingAudio: {fileID: 0}
+  AppliedSkill: 0
+  ImprovedSkill: 0
+--- !u!114 &-6403848332437827801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6451429924672066334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ef1a33782359ad459a4abd90c908127, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Audio: {fileID: 0}
+  Minutes: 1
+  Yields:
+  - YieldCounts: 20
+    YieldNames: {fileID: 11400000, guid: 5bf955e2a05d8cb45968d3170e0184cd, type: 2}
+  RequiredToolNames: []
+--- !u!114 &-4338563297768803509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6451429924672066334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8181b3dd6e8f5b143a90a869d85f7cb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SingleUnitTextId: GAMEPLAY_WaterBox
+  MultipleUnitTextId: GAMEPLAY_WaterBox
+  StackSprite: 
+  UnitsPerItem: 1
+  ChanceFull: 100
+  ShareStackWithGear: []
+  InstantiateStackItem: {fileID: 0}
+  StackConditionDifferenceConstraint: 0
 --- !u!1 &6763942737509881757
 GameObject:
   m_ObjectHideFlags: 0
@@ -1816,6 +1918,10 @@ PrefabInstance:
     - target: {fileID: 1934229828098401811, guid: 645c9fff21eca5f4f98d44c4ac6c2ca6, type: 3}
       propertyPath: m_Name
       value: OBJ_CandyBoxC_Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 8659073262621407702, guid: 645c9fff21eca5f4f98d44c4ac6c2ca6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 3150474306388093854, guid: 645c9fff21eca5f4f98d44c4ac6c2ca6, type: 3}

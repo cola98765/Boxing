@@ -61,14 +61,14 @@ namespace Boxing
             if (thisGearItem == null) return;
             for (int j = 0; j < BoxingUtils.pilable.Count; j++)
             {
-                if (BoxingUtils.pilable[j] == thisGearItem.name)
+                if (BoxingUtils.pilable[j] == thisGearItem)
                 {
                     float[] hp = new float[BoxingUtils.pilesize[j]];
                     int i = 0;
                     totalhp = 0;
                     for (i = 0; i < BoxingUtils.pilesize[j]; i++)
                     {
-                        GearItem can = GameManager.GetInventoryComponent().GetHighestConditionGearThatMatchesName(BoxingUtils.pilable[j]);
+                        GearItem can = GameManager.GetInventoryComponent().GetHighestConditionGearThatMatchesName(BoxingUtils.pilable[j].name);
                         if (can == null)
                         {
                             HUDMessage.AddMessage("Not enought to pile, you need " + BoxingUtils.pilesize[j]);
@@ -120,8 +120,7 @@ namespace Boxing
         }
         private static void OnPileFinished(bool success, bool playerCancel, float progress)
         {
-            GearItem toadd = GearItem.LoadGearItemPrefab(BoxingUtils.unpilable[pileindex]);
-            GameManager.GetPlayerManagerComponent().InstantiateItemInPlayerInventory(toadd, 1, totalhp);
+            GameManager.GetPlayerManagerComponent().InstantiateItemInPlayerInventory(BoxingUtils.unpilable[pileindex], 1, totalhp);
         }
 
         private static void OnUnPile()
@@ -131,7 +130,7 @@ namespace Boxing
             if (thisGearItem == null) return;
             for (int j = 0; j < BoxingUtils.unpilable.Count; j++)
             {
-                if (BoxingUtils.unpilable[j] == thisGearItem.name)
+                if (BoxingUtils.unpilable[j] == thisGearItem)
                 {
                     if (thisGearItem.m_FoodItem != null && thisGearItem.m_FoodItem.m_CaloriesRemaining != thisGearItem.m_FoodItem.m_CaloriesTotal)
                     {
@@ -166,10 +165,9 @@ namespace Boxing
         }
         private static void OnUnPileFinished(bool success, bool playerCancel, float progress)
         {
-            GearItem toadd = GearItem.LoadGearItemPrefab(BoxingUtils.pilable[pileindex]);
             for (int i = 0; i < BoxingUtils.pilesize[pileindex]; i++)
             {
-                GameManager.GetPlayerManagerComponent().InstantiateItemInPlayerInventory(toadd, 1, totalhp);
+                GameManager.GetPlayerManagerComponent().InstantiateItemInPlayerInventory(BoxingUtils.pilable[pileindex], 1, totalhp);
             }
         }
     }

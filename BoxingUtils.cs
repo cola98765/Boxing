@@ -1,10 +1,9 @@
 ﻿using Il2Cpp;
-using Il2CppTLD.Cooking;
-using Il2CppTLD.Gear;
-using Il2CppTLD.IntBackedUnit;
+using Il2CppSystem;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.Playables;
+using UnityEngine.UIElements;
+
 
 namespace Boxing
 {
@@ -13,10 +12,10 @@ namespace Boxing
         public static Panel_Inventory inventory;
         public static GameObject treebark = Addressables.LoadAssetAsync<GameObject>("GEAR_Treebark").WaitForCompletion();
 
-        public static List<string> pilable = [];
-        public static List<string> unpilable = [];
+        public static List<GearItem> pilable = [];
+        public static List<GearItem> unpilable = [];
         public static List<int> pilesize = [];
-
+        //public static GearItem potableWaterSupply = 
 
         public static GameObject GetPlayer()
         {
@@ -45,16 +44,43 @@ namespace Boxing
                             sr.Close();
                             return false;
                         }
-                        GearItem source = GearItem.LoadGearItemPrefab(packline[0]);
+                        GearItem source;
+                        if (packline[0] == "GEAR_PotableWaterSupply")
+                        {
+                            source = GameManager.GetInventoryComponent().GetPotableWaterSupply();
+                        }
+                        else
+                        {
+                            source = GearItem.LoadGearItemPrefab(packline[0]);
+                        }
                         GearItem target = GearItem.LoadGearItemPrefab(packline[1]);
                         if (source == null || target == null)
                         {
                             MelonLoader.MelonLogger.Msg("one of items is null, skipping");
                             continue;
                         }
-                        pilable.Add(packline[0]);
-                        unpilable.Add(packline[1]);
-                        pilesize.Add(Int32.Parse(packline[2]));
+                        pilable.Add(source);
+                        unpilable.Add(target);
+                        pilesize.Add(System.Int32.Parse(packline[2]));
+                        if (packline[0] + "Box" == packline[1])
+                        {
+                            GameObject targetGO = target.gameObject;
+                            MeshRenderer[] targetMat = targetGO.GetComponentsInChildren<MeshRenderer>();
+                            MeshFilter[] targetMesh = targetGO.GetComponentsInChildren<MeshFilter>();
+                            Material[] sourceMat = source.gameObject.GetComponentsInChildren<MeshRenderer>()[0].sharedMaterials;
+                            Mesh sourceMesh = source.gameObject.GetComponentsInChildren<MeshFilter>()[0].mesh;
+                            foreach (MeshRenderer r in targetMat)
+                            {
+                                if (r.name == "OBJ_CandyBoxC_LOD0") continue;
+                                r.sharedMaterials = sourceMat;
+                            }
+                            foreach (MeshFilter r in targetMesh)
+                            {
+                                if (r.name == "OBJ_CandyBoxC_LOD0") continue;
+                                r.mesh = sourceMesh;
+                            }
+                            MelonLoader.MelonLogger.Msg("mesh added for: " + packline[1]);
+                        }
                         if (Settings.instance.decay)
                         {
                             if (target.GearItemData.m_DailyHPDecay == 0)
@@ -89,25 +115,25 @@ namespace Boxing
                     }
                     sr.Close();
                 }
-                MelonLoader.MelonLogger.Msg("boxing blueprints loaded: " + pilable.Count);
+                MelonLoader.MelonLogger.Msg("blueprints loaded: " + pilable.Count);
                 return true;
             }
             return false;            
         }
-        public static bool IsItemPileable(string gearItemName)
+        public static bool IsItemPileable(GearItem gi)
         {
             for(int i = 0; i < pilable.Count; i++)
             {
-                if (pilable[i] == gearItemName) return true;
+                if (pilable[i] == gi) return true;
             }
             return false;
         }
 
-        public static bool IsItemUnPileable(string gearItemName)
+        public static bool IsItemUnPileable(GearItem gi)
         {
             for (int i = 0; i < unpilable.Count; i++)
             {
-                if (unpilable[i] == gearItemName) return true;
+                if (unpilable[i] == gi) return true;
             }
             return false;
         }

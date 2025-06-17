@@ -1,4 +1,6 @@
-﻿using MelonLoader;
+﻿using Il2Cpp;
+using MelonLoader;
+using UnityEngine;
 
 namespace Boxing
 {
@@ -15,10 +17,9 @@ namespace Boxing
         }
         public override void OnSceneWasInitialized(int level, string name)
         {
-            if (BoxingUtils.IsScenePlayable(name))
+            if (BoxingUtils.IsMainMenu(name))
             {
                 isLoaded = true;
-
                 BoxingUtils.LoadItems();
 
             }
