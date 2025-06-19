@@ -1,9 +1,9 @@
 {
   "ModGenericComponent": {
-    "DisplayNameLocalizationId": "GAMEPLAY_DogFoodBox",
-    "DescriptionLocalizatonId": "GAMEPLAY_DogFoodBoxDescription",
+    "DisplayNameLocalizationId": "GAMEPLAY_DogFood",
+    "DescriptionLocalizatonId": "GAMEPLAY_DogFoodDescription",
     "InventoryActionLocalizationId": "",
-    "WeightKG": 2.7,
+    "WeightKG": 1.0,
     "DaysToDecay": 0,
     "MaxHP": 100.0,
     "InitialCondition": "Perfect",
@@ -33,8 +33,8 @@
     "InspectModel": ""
   },
   "ModStackableBehaviour": {
-    "SingleUnitTextId": "GAMEPLAY_DogFoodBox",
-    "MultipleUnitTextId": "GAMEPLAY_DogFoodBox",
+    "SingleUnitTextId": "GAMEPLAY_DogFood",
+    "MultipleUnitTextId": "GAMEPLAY_DogFood",
     "StackSprite": "",
     "UnitsPerItem": 1,
     "ChanceFull": 100.0,

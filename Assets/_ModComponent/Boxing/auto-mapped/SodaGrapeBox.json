@@ -1,9 +1,9 @@
 {
   "ModGenericComponent": {
-    "DisplayNameLocalizationId": "GAMEPLAY_SodaGrapeBox",
-    "DescriptionLocalizatonId": "GAMEPLAY_SodaGrapeBoxDescription",
+    "DisplayNameLocalizationId": "GAMEPLAY_SodaGrape",
+    "DescriptionLocalizatonId": "GAMEPLAY_SodaGrapeDescription",
     "InventoryActionLocalizationId": "",
-    "WeightKG": 3.0,
+    "WeightKG": 1.0,
     "DaysToDecay": 0,
     "MaxHP": 100.0,
     "InitialCondition": "Perfect",
@@ -33,8 +33,8 @@
     "InspectModel": ""
   },
   "ModStackableBehaviour": {
-    "SingleUnitTextId": "GAMEPLAY_SodaGrapeBox",
-    "MultipleUnitTextId": "GAMEPLAY_SodaGrapeBox",
+    "SingleUnitTextId": "GAMEPLAY_SodaGrape",
+    "MultipleUnitTextId": "GAMEPLAY_SodaGrape",
     "StackSprite": "",
     "UnitsPerItem": 1,
     "ChanceFull": 100.0,

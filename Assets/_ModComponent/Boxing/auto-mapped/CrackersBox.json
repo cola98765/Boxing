@@ -1,7 +1,7 @@
 {
   "ModGenericComponent": {
-    "DisplayNameLocalizationId": "GAMEPLAY_CrackersBox",
-    "DescriptionLocalizatonId": "GAMEPLAY_CrackersBoxDescription",
+    "DisplayNameLocalizationId": "GAMEPLAY_Crackers",
+    "DescriptionLocalizatonId": "GAMEPLAY_CrackersDescription",
     "InventoryActionLocalizationId": "",
     "WeightKG": 1.0,
     "DaysToDecay": 0,
@@ -33,8 +33,8 @@
     "InspectModel": ""
   },
   "ModStackableBehaviour": {
-    "SingleUnitTextId": "GAMEPLAY_CrackersBox",
-    "MultipleUnitTextId": "GAMEPLAY_CrackersBox",
+    "SingleUnitTextId": "GAMEPLAY_Crackers",
+    "MultipleUnitTextId": "GAMEPLAY_Crackers",
     "StackSprite": "",
     "UnitsPerItem": 1,
     "ChanceFull": 100.0,

@@ -61,7 +61,7 @@ namespace Boxing
             if (thisGearItem == null) return;
             for (int j = 0; j < BoxingUtils.pilable.Count; j++)
             {
-                if (BoxingUtils.pilable[j] == thisGearItem)
+                if (BoxingUtils.pilable[j].name == thisGearItem.name)
                 {
                     float[] hp = new float[BoxingUtils.pilesize[j]];
                     int i = 0;
@@ -130,7 +130,7 @@ namespace Boxing
             if (thisGearItem == null) return;
             for (int j = 0; j < BoxingUtils.unpilable.Count; j++)
             {
-                if (BoxingUtils.unpilable[j] == thisGearItem)
+                if (BoxingUtils.unpilable[j].name == thisGearItem.name)
                 {
                     if (thisGearItem.m_FoodItem != null && thisGearItem.m_FoodItem.m_CaloriesRemaining != thisGearItem.m_FoodItem.m_CaloriesTotal)
                     {

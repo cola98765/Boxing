@@ -1,9 +1,9 @@
 {
   "ModGenericComponent": {
-    "DisplayNameLocalizationId": "GAMEPLAY_SodaBox",
-    "DescriptionLocalizatonId": "GAMEPLAY_SodaBoxDescription",
+    "DisplayNameLocalizationId": "GAMEPLAY_Soda",
+    "DescriptionLocalizatonId": "GAMEPLAY_SodaDescription",
     "InventoryActionLocalizationId": "",
-    "WeightKG": 3.0,
+    "WeightKG": 1.0,
     "DaysToDecay": 0,
     "MaxHP": 100.0,
     "InitialCondition": "Perfect",
@@ -33,8 +33,8 @@
     "InspectModel": ""
   },
   "ModStackableBehaviour": {
-    "SingleUnitTextId": "GAMEPLAY_SodaBox",
-    "MultipleUnitTextId": "GAMEPLAY_SodaBox",
+    "SingleUnitTextId": "GAMEPLAY_Soda",
+    "MultipleUnitTextId": "GAMEPLAY_Soda",
     "StackSprite": "",
     "UnitsPerItem": 1,
     "ChanceFull": 100.0,

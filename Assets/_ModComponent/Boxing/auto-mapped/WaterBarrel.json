@@ -8,8 +8,8 @@
     "MaxHP": 100.0,
     "InitialCondition": "Perfect",
     "InventoryCategory": "Material",
-    "PickUpAudio": "Play_SndInvWaterBottle",
-    "PutBackAudio": "Play_SndInvWaterBottlePutBack",
+    "PickUpAudio": "Play_SndInvAmmoCardboardBox",
+    "PutBackAudio": "Play_SndInvAmmoCardboardBox",
     "StowAudio": "Play_InventoryStow",
     "WornOutAudio": "",
     "InspectOnPickup": true,
@@ -31,17 +31,6 @@
     ],
     "NormalModel": "",
     "InspectModel": ""
-  },
-  "ModHarvestableBehaviour": {
-    "Audio": "",
-    "Minutes": 5,
-    "YieldCounts": [
-      120
-    ],
-    "YieldNames": [
-      "GEAR_Water1000ml"
-    ],
-    "RequiredToolNames": []
   },
   "ModStackableBehaviour": {
     "SingleUnitTextId": "GAMEPLAY_WaterBarrel",

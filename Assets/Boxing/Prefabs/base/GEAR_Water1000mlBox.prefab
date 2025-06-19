@@ -1,0 +1,130 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6451429924672066334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7584609500371251644}
+  - component: {fileID: 2404312374454753779}
+  - component: {fileID: -2441749057551902168}
+  - component: {fileID: -2880764359224482016}
+  - component: {fileID: 4947613727041727634}
+  m_Layer: 0
+  m_Name: GEAR_Water1000mlBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7584609500371251644
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6451429924672066334}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2404312374454753779
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6451429924672066334}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-2441749057551902168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6451429924672066334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b791cf8328f045d45bf04b4f116cb5bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayNameLocalizationId: GAMEPLAY_Water1000ml
+  DescriptionLocalizatonId: GAMEPLAY_Water1000mlDescription
+  InventoryActionLocalizationId: 
+  WeightKG: 1
+  DaysToDecay: 0
+  MaxHP: 100
+  InitialCondition: 1
+  InventoryCategory: 5
+  PickUpAudio: {fileID: 11400000, guid: dc6fb76df47bcb14e8947367a71e840c, type: 2}
+  PutBackAudio: {fileID: 11400000, guid: dc6fb76df47bcb14e8947367a71e840c, type: 2}
+  StowAudio: {fileID: 11400000, guid: cc4b615df8d7fdf42a45d9192c317d75, type: 2}
+  WornOutAudio: {fileID: 0}
+  InspectOnPickup: 1
+  InspectDistance: 1
+  InspectAngles: {x: 0, y: 0, z: 0}
+  InspectOffset: {x: 0, y: 0, z: 0}
+  InspectScale: {x: 1, y: 1, z: 1}
+  NormalModel: {fileID: 0}
+  InspectModel: {fileID: 0}
+--- !u!114 &-2880764359224482016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6451429924672066334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8181b3dd6e8f5b143a90a869d85f7cb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SingleUnitTextId: GAMEPLAY_Water1000ml
+  MultipleUnitTextId: GAMEPLAY_Water1000ml
+  StackSprite: 
+  UnitsPerItem: 1
+  ChanceFull: 100
+  ShareStackWithGear: []
+  InstantiateStackItem: {fileID: 0}
+  StackConditionDifferenceConstraint: 0
+--- !u!114 &4947613727041727634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6451429924672066334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b360e647930687e44be00c8e1cbabafd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
+  RequiredGear: []
+  RequiredPowder: []
+  RequiredLiquid:
+  - LiquidItem: {fileID: 11400000, guid: 39e73e9b1ca7d824c9aac431a9967c04, type: 2}
+    VolumeInLitres: 20
+  RequiredTool: {fileID: 0}
+  OptionalTools: []
+  RequiredCraftingLocation: 0
+  RequiresLitFire: 0
+  RequiresLight: 0
+  CraftedResult: {fileID: 11400000, guid: 61182125ec9b23548ac6fcb303fe824e, type: 2}
+  CraftedResultCount: 1
+  DurationMinutes: 1
+  CraftingAudio: {fileID: 0}
+  AppliedSkill: 0
+  ImprovedSkill: 0

@@ -22,7 +22,7 @@ namespace Boxing
                 if (__instance != InterfaceManager.GetPanel<Panel_Inventory>()?.m_ItemDescriptionPage) return;
                 BoxingFunctionalities.pileItem = gi?.GetComponent<GearItem>();
                 BoxingFunctionalities.unPileItem = gi?.GetComponent<GearItem>();
-                if (gi != null && BoxingUtils.IsItemPileable(gi) == true)
+                if (gi != null && BoxingUtils.IsItemPileable(gi.name) == true)
                 {
                     BoxingFunctionalities.SetPileActive(true);
                 }
@@ -31,7 +31,7 @@ namespace Boxing
                     BoxingFunctionalities.SetPileActive(false);
                 }
 
-                if (gi != null && BoxingUtils.IsItemUnPileable(gi) == true)
+                if (gi != null && BoxingUtils.IsItemUnPileable(gi.name) == true)
                 {
                     BoxingFunctionalities.SetUnPileActive(true);
                 }

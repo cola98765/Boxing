@@ -1,9 +1,9 @@
 {
   "ModGenericComponent": {
-    "DisplayNameLocalizationId": "GAMEPLAY_TomatoSoupCanBox",
-    "DescriptionLocalizatonId": "GAMEPLAY_TomatoSoupCanBoxDescription",
+    "DisplayNameLocalizationId": "GAMEPLAY_TomatoSoupCan",
+    "DescriptionLocalizatonId": "GAMEPLAY_TomatoSoupCanDescription",
     "InventoryActionLocalizationId": "",
-    "WeightKG": 2.25,
+    "WeightKG": 1.0,
     "DaysToDecay": 0,
     "MaxHP": 100.0,
     "InitialCondition": "Perfect",
@@ -33,8 +33,8 @@
     "InspectModel": ""
   },
   "ModStackableBehaviour": {
-    "SingleUnitTextId": "GAMEPLAY_TomatoSoupCanBox",
-    "MultipleUnitTextId": "GAMEPLAY_TomatoSoupCanBox",
+    "SingleUnitTextId": "GAMEPLAY_TomatoSoupCan",
+    "MultipleUnitTextId": "GAMEPLAY_TomatoSoupCan",
     "StackSprite": "",
     "UnitsPerItem": 1,
     "ChanceFull": 100.0,

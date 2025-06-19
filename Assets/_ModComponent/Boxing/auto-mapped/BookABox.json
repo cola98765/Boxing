@@ -1,22 +1,15 @@
 {
-  "ModBurnableBehaviour": {
-    "BurningMinutes": 180,
-    "BurningMinutesBeforeAllowedToAdd": 0.0,
-    "SuccessModifier": 35.0,
-    "TempIncrease": 20.0,
-    "DurationOffset": 0.0
-  },
   "ModGenericComponent": {
-    "DisplayNameLocalizationId": "GAMEPLAY_BookABox",
-    "DescriptionLocalizatonId": "GAMEPLAY_BookABoxDescription",
+    "DisplayNameLocalizationId": "GAMEPLAY_BookA",
+    "DescriptionLocalizatonId": "GAMEPLAY_BookADescription",
     "InventoryActionLocalizationId": "",
-    "WeightKG": 5.0,
+    "WeightKG": 1.0,
     "DaysToDecay": 0,
     "MaxHP": 100.0,
     "InitialCondition": "Perfect",
-    "InventoryCategory": "Firestarting",
-    "PickUpAudio": "Play_SndInvBookHardcover",
-    "PutBackAudio": "Play_SndInvBookHardcover",
+    "InventoryCategory": "Material",
+    "PickUpAudio": "Play_SndInvAmmoCardboardBox",
+    "PutBackAudio": "Play_SndInvAmmoCardboardBox",
     "StowAudio": "Play_InventoryStow",
     "WornOutAudio": "",
     "InspectOnPickup": true,
@@ -40,8 +33,8 @@
     "InspectModel": ""
   },
   "ModStackableBehaviour": {
-    "SingleUnitTextId": "GAMEPLAY_BookABox",
-    "MultipleUnitTextId": "GAMEPLAY_BookABox",
+    "SingleUnitTextId": "GAMEPLAY_BookA",
+    "MultipleUnitTextId": "GAMEPLAY_BookA",
     "StackSprite": "",
     "UnitsPerItem": 1,
     "ChanceFull": 100.0,

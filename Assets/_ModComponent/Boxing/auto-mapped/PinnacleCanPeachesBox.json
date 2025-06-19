@@ -1,9 +1,9 @@
 {
   "ModGenericComponent": {
-    "DisplayNameLocalizationId": "GAMEPLAY_PinnacleCanPeachesBox",
-    "DescriptionLocalizatonId": "GAMEPLAY_PinnacleCanPeachesBoxDescription",
+    "DisplayNameLocalizationId": "GAMEPLAY_PinnacleCanPeaches",
+    "DescriptionLocalizatonId": "GAMEPLAY_PinnacleCanPeachesDescription",
     "InventoryActionLocalizationId": "",
-    "WeightKG": 2.7,
+    "WeightKG": 1.0,
     "DaysToDecay": 0,
     "MaxHP": 100.0,
     "InitialCondition": "Perfect",
@@ -33,8 +33,8 @@
     "InspectModel": ""
   },
   "ModStackableBehaviour": {
-    "SingleUnitTextId": "GAMEPLAY_PinnacleCanPeachesBox",
-    "MultipleUnitTextId": "GAMEPLAY_PinnacleCanPeachesBox",
+    "SingleUnitTextId": "GAMEPLAY_PinnacleCanPeaches",
+    "MultipleUnitTextId": "GAMEPLAY_PinnacleCanPeaches",
     "StackSprite": "",
     "UnitsPerItem": 1,
     "ChanceFull": 100.0,

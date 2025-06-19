@@ -1,0 +1,10 @@
+{
+    "Name": "Boxing_FoodPackByTKG",
+    "Author": "cola98765",
+    "Version": "",
+    "Requires": [
+        "Boxing",
+        "FoodPackByTKG"
+    ],
+    "RequiresDLC": false
+}

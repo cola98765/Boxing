@@ -1,7 +1,9 @@
 ﻿using Il2Cpp;
 using Il2CppSystem;
+using Il2CppTLD.IntBackedUnit;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Playables;
 using UnityEngine.UIElements;
 
 
@@ -15,7 +17,6 @@ namespace Boxing
         public static List<GearItem> pilable = [];
         public static List<GearItem> unpilable = [];
         public static List<int> pilesize = [];
-        //public static GearItem potableWaterSupply = 
 
         public static GameObject GetPlayer()
         {
@@ -23,6 +24,16 @@ namespace Boxing
         }
         public static bool LoadItems()
         {
+            //file format
+            //gear_source;gear_target;number;gear_box;stack size x;y;z; margin x;y;z
+            //# comments
+            //only first 3 are required if "gear_target" does not use dynamic object creation
+            //for the dynamic creation to work "gear_target" name has to equal "gear_source" + "Box"
+            //eg. "GEAR_Soda" -> "GEAR_SodaBox"
+            //"stack size" does not have to match "number"
+            //"gear_box" can be empty if you want to create simple stack
+            //TODO 'gear_box' has restrictions, generalize it even more
+            //TODO it may be possible to create gear bypassing .modcomponent entirely
             if (File.Exists("Mods\\BoxingList.txt") && pilable.Count == 0)
             {
                 using (StreamReader sr = File.OpenText("Mods\\BoxingList.txt"))
@@ -45,11 +56,6 @@ namespace Boxing
                             return false;
                         }
                         GearItem source;
-                        if (packline[0] == "GEAR_PotableWaterSupply")
-                        {
-                            source = GameManager.GetInventoryComponent().GetPotableWaterSupply();
-                        }
-                        else
                         {
                             source = GearItem.LoadGearItemPrefab(packline[0]);
                         }
@@ -64,23 +70,87 @@ namespace Boxing
                         pilesize.Add(System.Int32.Parse(packline[2]));
                         if (packline[0] + "Box" == packline[1])
                         {
-                            GameObject targetGO = target.gameObject;
-                            MeshRenderer[] targetMat = targetGO.GetComponentsInChildren<MeshRenderer>();
-                            MeshFilter[] targetMesh = targetGO.GetComponentsInChildren<MeshFilter>();
-                            Material[] sourceMat = source.gameObject.GetComponentsInChildren<MeshRenderer>()[0].sharedMaterials;
-                            Mesh sourceMesh = source.gameObject.GetComponentsInChildren<MeshFilter>()[0].mesh;
-                            foreach (MeshRenderer r in targetMat)
+                            int[] size = { System.Int32.Parse(packline[4]), System.Int32.Parse(packline[5]), System.Int32.Parse(packline[6]) };
+                            int[] count = { 0, 0, 0 };
+                            //cause we can't have nice things
+                            float[] margin = { float.Parse(packline[7]), float.Parse(packline[8]), float.Parse(packline[9]) };
+                            float[] offset = { 0, 0, 0 };
+                            
+                            GearItem box = GearItem.LoadGearItemPrefab(packline[3]);
+                            MeshRenderer[] sourceMat = source.gameObject.GetComponentsInChildren<MeshRenderer>(true);
+                            MeshFilter[] sourceMesh = source.gameObject.GetComponentsInChildren<MeshFilter>(true);
+                            BoxCollider sourceCollider = source.gameObject.GetComponent<BoxCollider>();
+
+                            if (source.gameObject.GetComponent<LiquidItem>() != null)
                             {
-                                if (r.name == "OBJ_CandyBoxC_LOD0") continue;
-                                r.sharedMaterials = sourceMat;
+                                target.GearItemData.m_BaseWeight = System.Int32.Parse(packline[2]) * ItemWeight.FromKilograms(source.gameObject.GetComponent<LiquidItem>().m_LiquidCapacity.ToQuantity(1f));
                             }
-                            foreach (MeshFilter r in targetMesh)
+                            else
                             {
-                                if (r.name == "OBJ_CandyBoxC_LOD0") continue;
-                                r.mesh = sourceMesh;
+                                target.GearItemData.m_BaseWeight = System.Int32.Parse(packline[2]) * source.GearItemData.m_BaseWeight;
                             }
+                            //check collider
+                            Vector3 position = Vector3.zero;
+                            position.y = (size[1] * sourceCollider.size.y + 0.005f) / 2;
+                            target.gameObject.GetComponent<BoxCollider>().center = position;
+                            
+                            position.x = size[0] * (sourceCollider.size.x + margin[0]);
+                            position.y = size[1] * (sourceCollider.size.y + margin[1]) + 0.005f;
+                            position.z = size[2] * (sourceCollider.size.z + margin[2]);
+                            target.gameObject.GetComponent<BoxCollider>().size = position;
+                            //this trusts that even if collider is wrong size it's at least centered
+                            offset[0] = -sourceCollider.center.x;
+                            offset[1] = -sourceCollider.center.y + (sourceCollider.size.y / 2);
+                            offset[2] = -sourceCollider.center.z;
+                            //add box if config asks for it
+                            if (box != null)
+                            {
+                                //this assumes that box is 1/4m x 1/8m x 1/4m
+                                position = box.gameObject.GetComponentsInChildren<Transform>()[1].localScale;
+                                position.x *= 4 * size[0] * (sourceCollider.size.x + margin[0]);
+                                position.y *= 4 * size[1] * (sourceCollider.size.y + margin[1]);
+                                position.z *= 4 * size[2] * (sourceCollider.size.z + margin[2]);
+                                GameObject localbox = new GameObject("Box");
+                                localbox.transform.localScale = position;
+                                localbox.AddComponent<MeshFilter>().mesh = box.gameObject.GetComponentInChildren<MeshFilter>().mesh;
+                                localbox.AddComponent<MeshRenderer>().sharedMaterials = box.gameObject.GetComponentInChildren<MeshRenderer>().sharedMaterials;
+                                localbox.transform.parent = target.gameObject.transform;
+
+                            }
+                            //add individual items in box
+                            for (int i = 0; i < (size[0] * size[1] * size[2]); i++)
+                            {
+                                for (int j = 0; j < sourceMesh.Length; j++)
+                                {
+                                    //most items use one mesh without LOD tag, but eg cooking oil use multiple all ending in LOD0
+                                    if (j == 0 || sourceMesh[j].name.Contains("LOD0"))
+                                    {
+                                        GameObject can = new GameObject("can");
+                                        can.AddComponent<MeshFilter>().mesh = sourceMesh[j].mesh;
+                                        can.AddComponent<MeshRenderer>().sharedMaterials = sourceMat[j].sharedMaterials;
+                                        position.x = offset[0] + ((1 - size[0] + count[0] * 2) * (sourceCollider.size.x + margin[0]) / 2);
+                                        position.y = offset[1] + 0.005f + (count[1] * (sourceCollider.size.y + margin[1]));
+                                        position.z = offset[2] + ((1 - size[2] + count[2] * 2) * (sourceCollider.size.z + margin[2]) / 2);
+                                        can.transform.position = position;
+                                        can.transform.parent = target.gameObject.transform;
+                                    }
+                                }
+                                count[0]++;
+                                if (count[0] == size[0])
+                                {
+                                    count[0] = 0;
+                                    count[2]++;
+                                }
+                                if (count[2] == size[2])
+                                {
+                                    count[2] = 0;
+                                    count[1]++;
+                                }
+                            }
+                            target.gameObject.transform.localScale = source.gameObject.transform.localScale;
                             MelonLoader.MelonLogger.Msg("mesh added for: " + packline[1]);
                         }
+                        //add all decay
                         if (Settings.instance.decay)
                         {
                             if (target.GearItemData.m_DailyHPDecay == 0)
@@ -120,63 +190,22 @@ namespace Boxing
             }
             return false;            
         }
-        public static bool IsItemPileable(GearItem gi)
+        public static bool IsItemPileable(string name)
         {
             for(int i = 0; i < pilable.Count; i++)
             {
-                if (pilable[i] == gi) return true;
+                if (pilable[i].name == name) return true;
             }
             return false;
         }
 
-        public static bool IsItemUnPileable(GearItem gi)
+        public static bool IsItemUnPileable(string name)
         {
             for (int i = 0; i < unpilable.Count; i++)
             {
-                if (unpilable[i] == gi) return true;
+                if (unpilable[i].name == name) return true;
             }
             return false;
-        }
-
-        public static T? GetComponentSafe<T>(this Component? component) where T : Component
-        {
-            return component == null ? default : GetComponentSafe<T>(component.GetGameObject());
-        }
-        public static T? GetComponentSafe<T>(this GameObject? gameObject) where T : Component
-        {
-            return gameObject == null ? default : gameObject.GetComponent<T>();
-        }
-        public static T? GetOrCreateComponent<T>(this Component? component) where T : Component
-        {
-            return component == null ? default : GetOrCreateComponent<T>(component.GetGameObject());
-        }
-        public static T? GetOrCreateComponent<T>(this GameObject? gameObject) where T : Component
-        {
-            if (gameObject == null)
-            {
-                return default;
-            }
-
-            T? result = GetComponentSafe<T>(gameObject);
-
-            if (result == null)
-            {
-                result = gameObject.AddComponent<T>();
-            }
-
-            return result;
-        }
-        internal static GameObject? GetGameObject(this Component? component)
-        {
-            try
-            {
-                return component == null ? default : component.gameObject;
-            }
-            catch (System.Exception exception)
-            {
-                MelonLoader.MelonLogger.Msg($"Returning null since this could not obtain a Game Object from the component. Stack trace:\n{exception.Message}");
-            }
-            return null;
         }
 
         public static bool IsScenePlayable()

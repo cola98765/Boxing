@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 979bcfae80cf69f44b869e9c8c3392e5, type: 3}
+  m_Name: Boxing_FoodPackByTKG
+  m_EditorClassIdentifier: 
+  Name: Boxing_FoodPackByTKG
+  Author: cola98765
+  Version: 
+  RequiredMods:
+  - Boxing
+  - FoodPackByTKG
+  RequiresDLC: 0
+  modLocalization: {fileID: 11400000, guid: 6c378324f2c97be4b882d81aeb3c6792, type: 2}
+  modGearSpawns: {fileID: 11400000, guid: 359fe04307039b44b877a0bc0f2cae17, type: 2}
+  modItemRarities: {fileID: 0}
+  Items:
+  - {fileID: 5839314242313374779, guid: e99a5917ee977b54ab96fc924e71ef31, type: 3}
+  - {fileID: 5839314242313374779, guid: 1e68900a08936cb4bb6b6006ea1c3c6c, type: 3}
+  - {fileID: 5839314242313374779, guid: f9f1452447a90fd42b4b33f2892d0eee, type: 3}
+  - {fileID: 5839314242313374779, guid: 73855eff4b27f5b4bb2e075e58a64a46, type: 3}
+  - {fileID: 5839314242313374779, guid: b110cd3ea75a6d44e8c18127deed2f0f, type: 3}
+  - {fileID: 5839314242313374779, guid: ef1619c4d6ad40f4d8523412eaf7f6c8, type: 3}
+  - {fileID: 5839314242313374779, guid: 312e087f97e5439438ae2078daa82169, type: 3}
+  - {fileID: 5839314242313374779, guid: fd7510251d1a21147a74f979c4b8e494, type: 3}
+  - {fileID: 5839314242313374779, guid: 9b821c3274a7f8546b3c3420ca41a4c3, type: 3}
+  - {fileID: 5839314242313374779, guid: 3e38c310087baec4a8934e7b84b87246, type: 3}
+  Icons:
+  - {fileID: 2800000, guid: 7a58b6865ab293d4486871d18070642e, type: 3}
+  - {fileID: 2800000, guid: 0b62841bcefa4f440b13dcb4268c2cfd, type: 3}
+  - {fileID: 2800000, guid: 1b5c3bd49c65f634f800f98fe11ccbbe, type: 3}
+  - {fileID: 2800000, guid: 2f47e78d75e2e0c48838571354166f51, type: 3}
+  - {fileID: 2800000, guid: 89e20a1bdcaf74f429b0f4ff5aff9f3f, type: 3}
+  - {fileID: 2800000, guid: 33d0ea0363fa7e840b2d65d6b5e77bb6, type: 3}
+  - {fileID: 2800000, guid: 00681a54fed0f814fb37457da0350af7, type: 3}
+  - {fileID: 2800000, guid: 0fba34aae7576e34aa1090ecbb864743, type: 3}
+  - {fileID: 2800000, guid: 82988743a9f7ed04f93b79395d9ae588, type: 3}
+  - {fileID: 2800000, guid: 3d1c823244ee76343aed903b1be70be4, type: 3}

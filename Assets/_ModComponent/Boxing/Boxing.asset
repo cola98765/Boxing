@@ -17,21 +17,23 @@ MonoBehaviour:
   Version: 
   RequiredMods: []
   RequiresDLC: 0
-  modLocalization: {fileID: 0}
-  modGearSpawns: {fileID: 0}
+  modLocalization: {fileID: 11400000, guid: 65fe6001ee2448d4a90c5859ca9e5f1a, type: 2}
+  modGearSpawns: {fileID: 11400000, guid: 9d8720362b0611c4ba1857eec475c0eb, type: 2}
   modItemRarities: {fileID: 0}
   Items:
+  - {fileID: 6451429924672066334, guid: 3f27174fa5b5c2e49aef94ad9c6248fc, type: 3}
   - {fileID: 8439362343685313951, guid: 06db7defc1a9b424ca5a44890a04298c, type: 3}
-  - {fileID: 8439362343685313951, guid: 28487a860c6fba546a2fef748a8e2e9c, type: 3}
-  - {fileID: 8439362343685313951, guid: 460d8d039af15834ba11d0b64fc14576, type: 3}
-  - {fileID: 5028703667691849443, guid: 42e4aa713b2b33e46aa78711c665cf76, type: 3}
-  - {fileID: 5028703667691849443, guid: eda19ba884b8e5d4085939278d4d1a34, type: 3}
-  - {fileID: 5028703667691849443, guid: 95ec0250bbf31a5468f703c10c5fd6bd, type: 3}
-  - {fileID: 5028703667691849443, guid: 8c1dea203a2c286478ef733a33794700, type: 3}
-  - {fileID: 5028703667691849443, guid: 55d3c3bf3b6f82148b174f68e4fda009, type: 3}
-  - {fileID: 3213418757222480551, guid: acafc28ee9b93584288f4289cefa2df2, type: 3}
-  - {fileID: 6451429924672066334, guid: 58885563af3828547a13ebf1cac11900, type: 3}
-  - {fileID: 695646609369777539, guid: 78f3913cbac3f754daef1cdd25aa61e7, type: 3}
+  - {fileID: 8439362343685313951, guid: c8e73590536866749837a180c34317b1, type: 3}
+  - {fileID: 8439362343685313951, guid: 6e0143d95cc7dea4897a6450ba3b9338, type: 3}
+  - {fileID: 695646609369777539, guid: 8f8666eccda689b4c8e7593beaf789df, type: 3}
+  - {fileID: 5028703667691849443, guid: 1bec0d002aafc9f41811e9151527015c, type: 3}
+  - {fileID: 6451429924672066334, guid: e0a70e8ba96efe84ba50b919bb82e054, type: 3}
+  - {fileID: 3213418757222480551, guid: 987b79ec397165c48a4fd0e060eaf1ef, type: 3}
+  - {fileID: 5028703667691849443, guid: 5d03cb759b4b52447a49d8789dcced75, type: 3}
+  - {fileID: 5028703667691849443, guid: 2657c6c5a91abd74f85e9502c94616f9, type: 3}
+  - {fileID: 5028703667691849443, guid: 79d05afe1711ae64aa1e634118788243, type: 3}
+  - {fileID: 5028703667691849443, guid: 326dc5347bd6d2e4ea0842e0da3c9330, type: 3}
+  - {fileID: 2299098515031542694, guid: d99d5306e25c3fd4694bb974a6b615c8, type: 3}
   Icons:
   - {fileID: 2800000, guid: 0d7037a172d28ad40b7f9915f772fdfa, type: 3}
   - {fileID: 2800000, guid: fc1e70766dcd8204fb9846479e7a86ed, type: 3}
@@ -44,3 +46,4 @@ MonoBehaviour:
   - {fileID: 2800000, guid: a73606998bef0344fa99ca66262bfb62, type: 3}
   - {fileID: 2800000, guid: 96b07919aa7d1ff4faf1536e493c5df5, type: 3}
   - {fileID: 2800000, guid: 284bb6c431390684c91b200bee6762af, type: 3}
+  - {fileID: 2800000, guid: 9c10eb75767677844b3476a88161d8ce, type: 3}
