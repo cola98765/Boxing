@@ -23,6 +23,10 @@ BoxingList is where most things are actualyl defined for this mod
 |-------------------|-------------------|-----------------------|-----------------------|-------------------------------------------|---------------|-----------------------------------------------|
 |Source gear name	|Boxed gear name	|Number of items in box	|Empty box gear name	|how many items in X;Y;Z are to be rendered	| Offset X;Y;Z	| rotation mode: inherit/ignore/[TODO: random]	|
 
+* Use `#` as comments in this file
+* Only frist 3 fields are used if you use your own assets
+* for the dynamic boxing to work boxed name has to be saem as single item with `Box` at the end
+
 ## Changelog
 
 **V1.3.0**
