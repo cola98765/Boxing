@@ -79,15 +79,19 @@ namespace Boxing
                             GearItem box = GearItem.LoadGearItemPrefab(packline[3]);
                             MeshRenderer[] sourceMat = source.gameObject.GetComponentsInChildren<MeshRenderer>(true);
                             MeshFilter[] sourceMesh = source.gameObject.GetComponentsInChildren<MeshFilter>(true);
-                            BoxCollider sourceCollider = source.gameObject.GetComponent<BoxCollider>();
+                            BoxCollider sourceCollider = source.gameObject.GetComponentInChildren<BoxCollider>();
 
-                            if (source.gameObject.GetComponent<LiquidItem>() != null)
+                            if (source.gameObject.GetComponentInChildren<LiquidItem>() != null)
                             {
                                 target.GearItemData.m_BaseWeight = System.Int32.Parse(packline[2]) * ItemWeight.FromKilograms(source.gameObject.GetComponent<LiquidItem>().m_LiquidCapacity.ToQuantity(1f));
                             }
+                            else if (source.gameObject.GetComponentInChildren<StackableItem>())
+                            {
+                                target.GearItemData.m_BaseWeight = System.Int32.Parse(packline[2]) * source.WeightKG / source.gameObject.GetComponentInChildren<StackableItem>().StackMultiplier;
+                            }
                             else
                             {
-                                target.GearItemData.m_BaseWeight = System.Int32.Parse(packline[2]) * source.GearItemData.m_BaseWeight;
+                                target.GearItemData.m_BaseWeight = System.Int32.Parse(packline[2]) * source.WeightKG;
                             }
                             //check collider
                             Vector3 position = Vector3.zero;
@@ -117,21 +121,25 @@ namespace Boxing
                                 localbox.transform.parent = target.gameObject.transform;
 
                             }
+                            
                             //add individual items in box
                             for (int i = 0; i < (size[0] * size[1] * size[2]); i++)
                             {
                                 for (int j = 0; j < sourceMesh.Length; j++)
                                 {
-                                    //most items use one mesh without LOD tag, but eg cooking oil use multiple all ending in LOD0
-                                    if (j == 0 || sourceMesh[j].name.Contains("LOD0"))
+                                    //there are so many ways to group items, some have it on root, some have multiple, but not all are used
+                                    if (!(sourceMesh[j].name.Contains("LOD1") || sourceMesh[j].name.Contains("Open") || sourceMesh[j].name.Contains("Used") || sourceMesh[j].name.Contains("Old") ||
+                                        (sourceMesh[j].transform.parent != null && (sourceMesh[j].transform.parent.name.Contains("LOD1") || sourceMesh[j].transform.parent.name.Contains("Open") || sourceMesh[j].transform.parent.name.Contains("Used") || sourceMesh[j].transform.parent.name.Contains("Old")))))
                                     {
                                         GameObject can = new GameObject("can");
                                         can.AddComponent<MeshFilter>().mesh = sourceMesh[j].mesh;
                                         can.AddComponent<MeshRenderer>().sharedMaterials = sourceMat[j].sharedMaterials;
-                                        position.x = offset[0] + ((1 - size[0] + count[0] * 2) * (sourceCollider.size.x + margin[0]) / 2);
-                                        position.y = offset[1] + 0.005f + (count[1] * (sourceCollider.size.y + margin[1]));
-                                        position.z = offset[2] + ((1 - size[2] + count[2] * 2) * (sourceCollider.size.z + margin[2]) / 2);
-                                        can.transform.position = position;
+                                        if (packline[10] != "ignore") can.transform.rotation = sourceMesh[j].transform.rotation;
+                                        position = sourceMesh[j].transform.localPosition;
+                                        position.x += offset[0] + ((1 - size[0] + count[0] * 2) * (sourceCollider.size.x + margin[0]) / 2);
+                                        position.y += offset[1] + 0.005f + (count[1] * (sourceCollider.size.y + margin[1]));
+                                        position.z += offset[2] + ((1 - size[2] + count[2] * 2) * (sourceCollider.size.z + margin[2]) / 2);
+                                        can.transform.localPosition = position;
                                         can.transform.parent = target.gameObject.transform;
                                     }
                                 }
@@ -147,7 +155,7 @@ namespace Boxing
                                     count[1]++;
                                 }
                             }
-                            target.gameObject.transform.localScale = source.gameObject.transform.localScale;
+                            target.gameObject.transform.localScale = sourceCollider.transform.localScale;
                             MelonLoader.MelonLogger.Msg("mesh added for: " + packline[1]);
                         }
                         //add all decay
