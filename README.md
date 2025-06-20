@@ -25,9 +25,9 @@ BoxingList is where most things are actualyl defined for this mod
 
 * Use `#` as comments in this file
 * Only frist 3 fields are used if you use your own assets
-* for the dynamic boxing to work boxed name has to be saem as single item with `Box` at the end
+* for the dynamic boxing to work boxed name has to be same as single item with `Box` at the end
 * Empty box gear name can be empty, then items will not be held in the box
-* Stack size X;Y;Z is only visual, dioes not have to match number of items in box
+* Stack size X;Y;Z is only visual, does not have to match number of items in box
 
 ## Changelog
 
@@ -35,7 +35,7 @@ BoxingList is where most things are actualyl defined for this mod
 * completely reworked what you need to create gear
 	* only a box collider, generic item component, and optionally stackable behaviour is needed. things like scale of saide box collider of weight of item will be set in runtime
 	* expanded config file to facilitate that change. Not much is hardcoded.
-* localisation is copied from single tiems, and inventory icons are mostly generic
+* localisation is copied from single items, and inventory icons are mostly generic
 * added submod with boxes for most FoodPackByTKG items
 
 **V1.2.0**
