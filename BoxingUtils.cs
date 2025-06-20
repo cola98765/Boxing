@@ -75,12 +75,7 @@ namespace Boxing
                             //cause we can't have nice things
                             float[] margin = { float.Parse(packline[7]), float.Parse(packline[8]), float.Parse(packline[9]) };
                             float[] offset = { 0, 0, 0 };
-                            
-                            GearItem box = GearItem.LoadGearItemPrefab(packline[3]);
-                            MeshFilter[] sourceMesh = source.GetComponentsInChildren<MeshFilter>(true);
-                            BoxCollider sourceCollider = source.GetComponentInChildren<BoxCollider>();
-
-                            
+                                                       
                             if (source.GetComponentInChildren<LiquidItem>() != null)
                             {
                                 target.GearItemData.m_BaseWeight = System.Int32.Parse(packline[2]) * ItemWeight.FromKilograms(source.GetComponent<LiquidItem>().m_LiquidCapacity.ToQuantity(1f));
@@ -94,6 +89,7 @@ namespace Boxing
                                 target.GearItemData.m_BaseWeight = System.Int32.Parse(packline[2]) * source.GearItemData.m_BaseWeight;
                             }
                             //check collider
+                            BoxCollider sourceCollider = source.GetComponentInChildren<BoxCollider>();
                             Vector3 position = Vector3.zero;
                             position.y = (size[1] * sourceCollider.size.y + 0.005f) / 2;
                             target.GetComponent<BoxCollider>().center = position;
@@ -108,7 +104,9 @@ namespace Boxing
                             offset[2] = -sourceCollider.center.z;
                             target.transform.localScale = sourceCollider.transform.localScale;
                             Vector3 sourcesize = Vector3.Scale(sourceCollider.size, sourceCollider.transform.localScale);
+                            
                             //add box if config asks for it
+                            GearItem box = GearItem.LoadGearItemPrefab(packline[3]);
                             if (box != null)
                             {
                                 //this assumes that box is 1/4m x 1/8m x 1/4m
@@ -123,9 +121,10 @@ namespace Boxing
                                 localbox.transform.parent = target.transform;
 
                             }
-                            
+
 
                             //add individual items in box
+                            MeshFilter[] sourceMesh = source.GetComponentsInChildren<MeshFilter>(true);
                             for (int i = 0; i < (size[0] * size[1] * size[2]); i++)
                             {
                                 for (int j = 0; j < sourceMesh.Length; j++)
