@@ -29,6 +29,10 @@ BoxingList is where most things are actualyl defined for this mod
 * Empty box gear name can be empty, then items will not be held in the box
 * Stack size X;Y;Z is only visual, dioes not have to match number of items in box
 
+* Use `#` as comments in this file
+* Only frist 3 fields are used if you use your own assets
+* for the dynamic boxing to work boxed name has to be saem as single item with `Box` at the end
+
 ## Changelog
 
 **V1.3.0**
