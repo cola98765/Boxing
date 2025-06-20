@@ -25,14 +25,15 @@ namespace Boxing
         public static bool LoadItems()
         {
             //file format
-            //gear_source;gear_target;number;gear_box;stack size x;y;z; margin x;y;z
+            //gear_source;gear_target;number;gear_box;stack size x;y;z; margin x;y;z; rotation(preserve/ignore)
             //# comments
             //only first 3 are required if "gear_target" does not use dynamic object creation
             //for the dynamic creation to work "gear_target" name has to equal "gear_source" + "Box"
             //eg. "GEAR_Soda" -> "GEAR_SodaBox"
             //"stack size" does not have to match "number"
             //"gear_box" can be empty if you want to create simple stack
-            //TODO 'gear_box' has restrictions, generalize it even more
+            //TODO add "random" rotation mode
+            //TODO "gear_box" has restrictions, generalize it even more
             //TODO it may be possible to create gear bypassing .modcomponent entirely
             if (File.Exists("Mods\\BoxingList.txt") && pilable.Count == 0)
             {

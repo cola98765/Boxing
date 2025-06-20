@@ -8,14 +8,29 @@ And Unlike blueprints condition is preserved, meaning food will not magically ga
 ## Packages will decay
 Even if original author did not define decay rate for the package, if the base item had decay rate it will be applied to package too. (configurable)
 
-in addition to couple boxed items in this modcomponent package, base config file has [ItemPiles](https://github.com/Thekillergreece/FoodPackByTKG) and [FoodPackByTKG](https://github.com/Atlas-Lumi/ItemPiles) as examples
+in addition to dynamically created boxed items in this modcomponent package, base config file has [ItemPiles](https://github.com/Thekillergreece/FoodPackByTKG) and [FoodPackByTKG](https://github.com/Atlas-Lumi/ItemPiles) as examples
 
 ## Installation
 
 * Download the latest version from releases and place the .dll and provided .txt into the mods folder
 * depends on [ModSettings](https://github.com/DigitalzombieTLD/ModSettings/)
 
+## Config file format
+BoxingList is where most things are actualyl defined for this mod
+`GEAR_Soda;GEAR_SodaBox;6;GEAR_EmptyBox;3;1;2;0;0;0;inherit`
+
+|GEAR_Soda			|GEAR_SodaBox		|6						|GEAR_EmptyBox			|3;1;2										| 0;0;0			| inherit										|
+|-------------------|-------------------|-----------------------|-----------------------|-------------------------------------------|---------------|-----------------------------------------------|
+|Source gear name	|Boxed gear name	|Number of items in box	|Empty box gear name	|how many items in X;Y;Z are to be rendered	| Offset X;Y;Z	| rotation mode: inherit/ignore/[TODO: random]	|
+
 ## Changelog
+
+**V1.3.0**
+* completely reworked what you need to create gear
+	* only a box collider, generic item component, and optionally stackable behaviour is needed. things like scale of saide box collider of weight of item will be set in runtime
+	* expanded config file to facilitate that change. Not much is hardcoded.
+* localisation is copied from single tiems, and inventory icons are mostly generic
+* added submod with boxes for most FoodPackByTKG items
 
 **V1.2.0**
 * created couple sample boxed vanilla items (no localisation nor inventory icons)
