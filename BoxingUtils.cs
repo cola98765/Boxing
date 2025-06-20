@@ -77,51 +77,54 @@ namespace Boxing
                             float[] offset = { 0, 0, 0 };
                             
                             GearItem box = GearItem.LoadGearItemPrefab(packline[3]);
-                            MeshRenderer[] sourceMat = source.gameObject.GetComponentsInChildren<MeshRenderer>(true);
-                            MeshFilter[] sourceMesh = source.gameObject.GetComponentsInChildren<MeshFilter>(true);
-                            BoxCollider sourceCollider = source.gameObject.GetComponentInChildren<BoxCollider>();
+                            MeshFilter[] sourceMesh = source.GetComponentsInChildren<MeshFilter>(true);
+                            BoxCollider sourceCollider = source.GetComponentInChildren<BoxCollider>();
 
-                            if (source.gameObject.GetComponentInChildren<LiquidItem>() != null)
+                            
+                            if (source.GetComponentInChildren<LiquidItem>() != null)
                             {
-                                target.GearItemData.m_BaseWeight = System.Int32.Parse(packline[2]) * ItemWeight.FromKilograms(source.gameObject.GetComponent<LiquidItem>().m_LiquidCapacity.ToQuantity(1f));
+                                target.GearItemData.m_BaseWeight = System.Int32.Parse(packline[2]) * ItemWeight.FromKilograms(source.GetComponent<LiquidItem>().m_LiquidCapacity.ToQuantity(1f));
                             }
-                            else if (source.gameObject.GetComponentInChildren<StackableItem>())
+                            else if (source.GetComponentInChildren<StackableItem>())
                             {
-                                target.GearItemData.m_BaseWeight = System.Int32.Parse(packline[2]) * source.WeightKG / source.gameObject.GetComponentInChildren<StackableItem>().StackMultiplier;
+                                target.GearItemData.m_BaseWeight = System.Int32.Parse(packline[2]) * source.GearItemData.m_BaseWeight / source.GetComponentInChildren<StackableItem>().m_DefaultUnitsInItem;
                             }
                             else
                             {
-                                target.GearItemData.m_BaseWeight = System.Int32.Parse(packline[2]) * source.WeightKG;
+                                target.GearItemData.m_BaseWeight = System.Int32.Parse(packline[2]) * source.GearItemData.m_BaseWeight;
                             }
                             //check collider
                             Vector3 position = Vector3.zero;
                             position.y = (size[1] * sourceCollider.size.y + 0.005f) / 2;
-                            target.gameObject.GetComponent<BoxCollider>().center = position;
+                            target.GetComponent<BoxCollider>().center = position;
                             
                             position.x = size[0] * (sourceCollider.size.x + margin[0]);
                             position.y = size[1] * (sourceCollider.size.y + margin[1]) + 0.005f;
                             position.z = size[2] * (sourceCollider.size.z + margin[2]);
-                            target.gameObject.GetComponent<BoxCollider>().size = position;
+                            target.GetComponent<BoxCollider>().size = position;
                             //this trusts that even if collider is wrong size it's at least centered
                             offset[0] = -sourceCollider.center.x;
                             offset[1] = -sourceCollider.center.y + (sourceCollider.size.y / 2);
                             offset[2] = -sourceCollider.center.z;
+                            target.transform.localScale = sourceCollider.transform.localScale;
+                            Vector3 sourcesize = Vector3.Scale(sourceCollider.size, sourceCollider.transform.localScale);
                             //add box if config asks for it
                             if (box != null)
                             {
                                 //this assumes that box is 1/4m x 1/8m x 1/4m
-                                position = box.gameObject.GetComponentsInChildren<Transform>()[1].localScale;
-                                position.x *= 4 * size[0] * (sourceCollider.size.x + margin[0]);
-                                position.y *= 4 * size[1] * (sourceCollider.size.y + margin[1]);
-                                position.z *= 4 * size[2] * (sourceCollider.size.z + margin[2]);
+                                position = box.GetComponentsInChildren<Transform>()[1].localScale;
+                                position.x *= 4 * size[0] * (sourcesize.x + margin[0]);
+                                position.y *= 4 * size[1] * (sourcesize.y + margin[1]);
+                                position.z *= 4 * size[2] * (sourcesize.z + margin[2]);
                                 GameObject localbox = new GameObject("Box");
                                 localbox.transform.localScale = position;
-                                localbox.AddComponent<MeshFilter>().mesh = box.gameObject.GetComponentInChildren<MeshFilter>().mesh;
-                                localbox.AddComponent<MeshRenderer>().sharedMaterials = box.gameObject.GetComponentInChildren<MeshRenderer>().sharedMaterials;
-                                localbox.transform.parent = target.gameObject.transform;
+                                localbox.AddComponent<MeshFilter>().mesh = box.GetComponentInChildren<MeshFilter>().mesh;
+                                localbox.AddComponent<MeshRenderer>().sharedMaterials = box.GetComponentInChildren<MeshRenderer>().sharedMaterials;
+                                localbox.transform.parent = target.transform;
 
                             }
                             
+
                             //add individual items in box
                             for (int i = 0; i < (size[0] * size[1] * size[2]); i++)
                             {
@@ -133,14 +136,15 @@ namespace Boxing
                                     {
                                         GameObject can = new GameObject("can");
                                         can.AddComponent<MeshFilter>().mesh = sourceMesh[j].mesh;
-                                        can.AddComponent<MeshRenderer>().sharedMaterials = sourceMat[j].sharedMaterials;
+                                        can.AddComponent<MeshRenderer>().sharedMaterials = sourceMesh[j].GetComponent<MeshRenderer>().sharedMaterials;
                                         if (packline[10] != "ignore") can.transform.rotation = sourceMesh[j].transform.rotation;
                                         position = sourceMesh[j].transform.localPosition;
-                                        position.x += offset[0] + ((1 - size[0] + count[0] * 2) * (sourceCollider.size.x + margin[0]) / 2);
-                                        position.y += offset[1] + 0.005f + (count[1] * (sourceCollider.size.y + margin[1]));
-                                        position.z += offset[2] + ((1 - size[2] + count[2] * 2) * (sourceCollider.size.z + margin[2]) / 2);
+                                        position.x += offset[0] + ((1 - size[0] + count[0] * 2) * (sourcesize.x + margin[0]) / 2);
+                                        position.y += /*offset[1]*/ + 0.005f + (count[1] * (sourcesize.y + margin[1]));
+                                        position.z += offset[2] + ((1 - size[2] + count[2] * 2) * (sourcesize.z + margin[2]) / 2);
                                         can.transform.localPosition = position;
-                                        can.transform.parent = target.gameObject.transform;
+                                        can.transform.localScale = sourceMesh[j].transform.lossyScale;
+                                        can.transform.parent = target.transform;
                                     }
                                 }
                                 count[0]++;
@@ -155,7 +159,6 @@ namespace Boxing
                                     count[1]++;
                                 }
                             }
-                            target.gameObject.transform.localScale = sourceCollider.transform.localScale;
                             MelonLoader.MelonLogger.Msg("mesh added for: " + packline[1]);
                         }
                         //add all decay
