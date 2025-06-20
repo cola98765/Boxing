@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2965796163331459741}
-  - component: {fileID: -3287469043168618462}
-  - component: {fileID: -2507729083896319159}
-  - component: {fileID: 7709830632377230075}
+  - component: {fileID: -2206212535681122190}
+  - component: {fileID: -4810111888239205791}
+  - component: {fileID: -3424976480944180093}
   m_Layer: 0
-  m_Name: GEAR_CannedStewBox
+  m_Name: GEAR_HoneyJarBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +34,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &-3287469043168618462
+--- !u!65 &-2206212535681122190
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,7 +47,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-2507729083896319159
+--- !u!114 &-4810111888239205791
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -59,8 +59,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b791cf8328f045d45bf04b4f116cb5bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisplayNameLocalizationId: GAMEPLAY_CannedStew
-  DescriptionLocalizatonId: GAMEPLAY_CannedStewDescription
+  DisplayNameLocalizationId: GAMEPLAY_HoneyJar
+  DescriptionLocalizatonId: GAMEPLAY_HoneyJarDescription
   InventoryActionLocalizationId: 
   WeightKG: 1
   DaysToDecay: 0
@@ -78,7 +78,7 @@ MonoBehaviour:
   InspectScale: {x: 1, y: 1, z: 1}
   NormalModel: {fileID: 0}
   InspectModel: {fileID: 0}
---- !u!114 &7709830632377230075
+--- !u!114 &-3424976480944180093
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,8 +90,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8181b3dd6e8f5b143a90a869d85f7cb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SingleUnitTextId: GAMEPLAY_CannedStew
-  MultipleUnitTextId: GAMEPLAY_CannedStew
+  SingleUnitTextId: GAMEPLAY_HoneyJar
+  MultipleUnitTextId: GAMEPLAY_HoneyJar
   StackSprite: 
   UnitsPerItem: 1
   ChanceFull: 100

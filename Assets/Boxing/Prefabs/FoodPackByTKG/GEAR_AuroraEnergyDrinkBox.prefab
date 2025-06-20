@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2965796163331459741}
   - component: {fileID: 955569757193698321}
+  - component: {fileID: 1537474851550913784}
+  - component: {fileID: -5582320946148873783}
   m_Layer: 0
   m_Name: GEAR_AuroraEnergyDrinkBox
   m_TagString: Untagged
@@ -45,3 +47,54 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1537474851550913784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5839314242313374779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b791cf8328f045d45bf04b4f116cb5bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayNameLocalizationId: GAMEPLAY_AuroraEnergyDrink
+  DescriptionLocalizatonId: GAMEPLAY_AuroraEnergyDrinkDescription
+  InventoryActionLocalizationId: 
+  WeightKG: 1
+  DaysToDecay: 0
+  MaxHP: 100
+  InitialCondition: 1
+  InventoryCategory: 5
+  PickUpAudio: {fileID: 11400000, guid: dc6fb76df47bcb14e8947367a71e840c, type: 2}
+  PutBackAudio: {fileID: 11400000, guid: dc6fb76df47bcb14e8947367a71e840c, type: 2}
+  StowAudio: {fileID: 11400000, guid: cc4b615df8d7fdf42a45d9192c317d75, type: 2}
+  WornOutAudio: {fileID: 0}
+  InspectOnPickup: 1
+  InspectDistance: 1
+  InspectAngles: {x: 0, y: 0, z: 0}
+  InspectOffset: {x: 0, y: 0, z: 0}
+  InspectScale: {x: 1, y: 1, z: 1}
+  NormalModel: {fileID: 0}
+  InspectModel: {fileID: 0}
+--- !u!114 &-5582320946148873783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5839314242313374779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8181b3dd6e8f5b143a90a869d85f7cb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SingleUnitTextId: GAMEPLAY_AuroraEnergyDrink
+  MultipleUnitTextId: GAMEPLAY_AuroraEnergyDrink
+  StackSprite: 
+  UnitsPerItem: 1
+  ChanceFull: 100
+  ShareStackWithGear: []
+  InstantiateStackItem: {fileID: 0}
+  StackConditionDifferenceConstraint: 0
