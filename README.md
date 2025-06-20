@@ -19,9 +19,15 @@ in addition to dynamically created boxed items in this modcomponent package, bas
 BoxingList is where most things are actualyl defined for this mod
 `GEAR_Soda;GEAR_SodaBox;6;GEAR_EmptyBox;3;1;2;0;0;0;inherit`
 
-|GEAR_Soda			|GEAR_SodaBox		|6						|GEAR_EmptyBox			|3;1;2										| 0;0;0			| inherit										|
-|-------------------|-------------------|-----------------------|-----------------------|-------------------------------------------|---------------|-----------------------------------------------|
-|Source gear name	|Boxed gear name	|Number of items in box	|Empty box gear name	|how many items in X;Y;Z are to be rendered	| Offset X;Y;Z	| rotation mode: inherit/ignore/[TODO: random]	|
+|GEAR_Soda			|GEAR_SodaBox		|6						|GEAR_EmptyBox			|3;1;2				| 0;0;0			| inherit										|
+|-------------------|-------------------|-----------------------|-----------------------|-------------------|---------------|-----------------------------------------------|
+|Source gear name	|Boxed gear name	|Number of items in box	|Empty box gear name	|Stack size X;Y;Z	| Offset X;Y;Z	| rotation mode: inherit/ignore/[TODO: random]	|
+
+* Use `#` as comments in this file
+* Only frist 3 fields are used if you use your own assets
+* for the dynamic boxing to work boxed name has to be saem as single item with `Box` at the end
+* Empty box gear name can be empty, then items will not be held in the box
+* Stack size X;Y;Z is only visual, dioes not have to match number of items in box
 
 ## Changelog
 

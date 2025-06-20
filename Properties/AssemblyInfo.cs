@@ -18,5 +18,5 @@ internal static class BuildInfo
 	internal const string ModName = "Boxing";
 	internal const string ModAuthor = "cola98765";
 
-	internal const string ModVersion = "1.2.0";
+	internal const string ModVersion = "1.3.0";
 }
